@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-primary {
+  @apply px-5 py-3 bg-gradient-primary rounded-full text-white;
+}
+
+.btn-text {
+  @apply text-secondary;
+}
