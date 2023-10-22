@@ -2,12 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Proxima Nova";
+  font-weight: 300;
+  src: url("assets/fonts/Proxima Nova/Proxima Nova Light.otf");
+}
+@font-face {
+  font-family: "Proxima Nova";
+  font-weight: 400;
+  src: url("assets/fonts/Proxima Nova/Proxima Nova Regular.otf");
+}
+@font-face {
+  font-family: "Proxima Nova";
+  font-weight: 500;
+  src: url("assets/fonts/Proxima Nova/Proxima Nova Semibold.otf");
+}
+@font-face {
+  font-family: "Proxima Nova";
+  font-weight: 700;
+  src: url("assets/fonts/Proxima Nova/Proxima Nova Bold.otf");
+}
+
 .btn-gradient {
-  @apply px-5 py-3 bg-gradient-primary rounded-full text-white brightness-100 hover:brightness-125 duration-150;
+  @apply px-10 py-3 bg-gradient-primary rounded-full text-white brightness-100 hover:brightness-150 duration-150;
 }
 
 .btn-primary {
-  @apply px-5 py-3 bg-primary rounded-full text-white border-white border hover:bg-white hover:text-primary duration-150;
+  @apply px-10 py-3 bg-primary rounded-full text-white border-white border hover:bg-white hover:text-primary duration-150;
 }
 
 .btn-text {

@@ -1,1 +1,86 @@
-<div class="w-full bg-white/30 p-4"><p>nav-bar works!</p></div>
+<div class="flex justify-between w-full p-4 gap-14">
+  <div class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
+    <!-- logo -->
+    <img
+      class="object-contain w-full h-full"
+      [src]="navBarLogo"
+      alt="Snic Logo"
+    />
+  </div>
+  <!-- links -->
+  <div class="flex-wrap items-center hidden xl:flex grow gap-9">
+    <a
+      class="text-sm font-light text-white duration-150 hover:underline"
+      *ngFor="let link of pagesLinks"
+      [routerLink]="link.href"
+      routerLinkActive="!font-bold"
+      >{{ link.name }}</a
+    >
+  </div>
+  <!-- actions -->
+  <div class="flex items-center gap-3">
+    <button
+      type="button"
+      class="items-center hidden h-8 gap-2 p-2 text-white rounded-full md:flex hover:bg-white/30 min-w-fit"
+    >
+      <!-- lang icon btn -->
+      <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+      <p>EN</p>
+    </button>
+    <!-- search icon btn -->
+    <button
+      type="button"
+      class="relative w-8 h-8 p-2 rounded-full aspect-square hover:bg-white/30"
+    >
+      <img class="w-full h-full" [src]="navSearch" alt="Search" />
+    </button>
+    <!-- menu icon btn -->
+    <button
+      (click)="toggleMenu()"
+      type="button"
+      class="relative w-8 h-8 p-1 rounded-full xl:hidden aspect-square hover:bg-white/30"
+    >
+      <img class="w-full h-full" [src]="navMenu" alt="Open Menu" />
+    </button>
+    <button class="hidden btn-primary md:block" type="button">Login</button>
+  </div>
+</div>
+
+<!-- menu overlay -->
+<div
+  [ngClass]="[
+    'duration-300 absolute top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 flex flex-col gap-10 text-white z-50',
+    isMenuOverlayOpen
+      ? 'translate-y-0 xl:-translate-y-full opacity-100'
+      : '-translate-y-full'
+  ]"
+>
+  <!-- header -->
+  <div class="flex items-center justify-between">
+    <h2
+      class="font-bold text-2xl text-center md:text-start leading-[3rem] tracking-wider text-white max-w-lg"
+    >
+      Menu
+    </h2>
+    <!-- menu icon btn -->
+    <button
+      (click)="toggleMenu()"
+      type="button"
+      class="relative w-8 h-8 p-1 rounded-full xl:hidden aspect-square hover:bg-white/30"
+    >
+      <img class="w-full h-full" [src]="navClose" alt="Close" />
+    </button>
+  </div>
+  <!-- links -->
+  <div
+    class="grid items-center justify-between grid-cols-1 gap-10 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    <a
+      class="text-lg font-light text-white duration-150 hover:underline"
+      *ngFor="let link of pagesLinks"
+      [routerLink]="link.href"
+      routerLinkActive="!font-bold"
+      >{{ link.name }}</a
+    >
+  </div>
+</div>

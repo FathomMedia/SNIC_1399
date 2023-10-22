@@ -1,8 +1,44 @@
-<div class="relative px-24 pt-10">
+<div
+  class="relative px-6 py-6 md:px-24 md:py-10 rounded-b-[3rem] flex flex-col overflow-clip"
+>
   <app-nav-bar></app-nav-bar>
 
+  <!-- title and form -->
+  <div
+    class="flex flex-col items-center justify-between gap-10 py-2 md:flex-row"
+  >
+    <!-- title -->
+    <div class="flex flex-col items-center max-md:py-10 md:items-start gap-9">
+      <h2
+        class="font-bold text-4xl text-center md:text-start leading-[3rem] tracking-wider text-white max-w-lg"
+      >
+        <span class="relative isolate"
+          ><span
+            class="absolute -z-10 bottom-3 h-[0.3rem] w-full bg-secondary left-0 right-0"
+          ></span>
+          <span class="z-20">Discover</span>
+        </span>
+        our insurance services
+      </h2>
+      <button class="btn-primary w-fit" type="button">Explore Now</button>
+    </div>
+    <!-- form -->
+    <app-quick-motor-renewal class="w-full max-w-sm"></app-quick-motor-renewal>
+  </div>
+
   <!-- Hero video -->
-  <video class="absolute -z-10 top-0 right-0 bottom-0 left-0 w-full h-full object-cover" autoplay muted loop>
+  <video
+    class="absolute -z-20 top-0 right-0 bottom-0 left-0 w-full h-full object-cover rounded-b-[3rem]"
+    autoplay
+    muted
+    loop
+    (controls)="(false)"
+    (play)="(true)"
+  >
     <source [src]="heroVideo" type="video/mp4" />
   </video>
+  <!-- video overlay -->
+  <div
+    class="absolute -z-10 top-0 right-0 bottom-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(16,37,87,0.59)] to-[rgba(16,37,87,0.00)]"
+  ></div>
 </div>

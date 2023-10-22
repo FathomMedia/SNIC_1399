@@ -8,10 +8,20 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ServicesSectionComponent } from './components/services-section/services-section.component';
 import { ServiceCardComponent } from './components/service-card/service-card.component';
+import { QuickMotorRenewalComponent } from './components/quick-motor-renewal/quick-motor-renewal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HeroSectionComponent, LandingComponent, NavBarComponent, ServicesSectionComponent, ServiceCardComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    HeroSectionComponent,
+    LandingComponent,
+    NavBarComponent,
+    ServicesSectionComponent,
+    ServiceCardComponent,
+    QuickMotorRenewalComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
