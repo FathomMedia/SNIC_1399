@@ -1,7 +1,10 @@
-<p>services-section works!</p>
-<div>
-    <p>Data</p>
+<div class=" justify-center text-center py-14 mt-14">
+    <p class=" text-primary text-5xl font-bold">Your Protection</p>
+    <p class=" text-primary text-5xl font-normal">Starts Here</p>
+</div>
+<div class=" flex justify-center gap-4 px-24">
     <div *ngFor="let service of serviceData">
-        <p>{{service.title}}</p>
+        <app-service-card serviceIcon={{service.icon}} serviceTitle={{service.title}}
+            serviceDescription={{service.description}}></app-service-card>
     </div>
 </div>
