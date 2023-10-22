@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.btn-gradient {
+  @apply px-5 py-3 bg-gradient-primary rounded-full text-white brightness-100 hover:brightness-125 duration-150;
+}
+
 .btn-primary {
-  @apply px-5 py-3 bg-gradient-primary rounded-full text-white;
+  @apply px-5 py-3 bg-primary rounded-full text-white border-white border hover:bg-white hover:text-primary duration-150;
 }
 
 .btn-text {
-  @apply text-secondary;
+  @apply text-secondary brightness-100 hover:brightness-125 duration-150;
 }
