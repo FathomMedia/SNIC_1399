@@ -1,12 +1,14 @@
-<div class=" bg-white rounded-2xl p-6 flex flex-col gap-4">
-    <img src={{serviceIcon}} alt='' [width]=58 [height]=58 />
-    <div class=" text-primary text-lg font-bold ">
-        <p>{{serviceTitle}}</p>
+<div class="flex flex-col h-full gap-4 p-6 bg-white rounded-2xl">
+  <div class="flex flex-col gap-4 grow">
+    <img src="{{ serviceIcon }}" alt="" [width]="58" [height]="58" />
+    <div class="text-lg font-bold text-primary">
+      <p>{{ serviceTitle }}</p>
     </div>
-    <div class=" text-slate-500 text-sm font-normal">
-        <p>{{serviceDescription}}</p>
+    <div class="text-sm font-normal text-slate-500">
+      <p>{{ serviceDescription }}</p>
     </div>
-    <div class=" text-secondary text-base font-semibold">
-        <a href={{serviceLink}}>Find out more</a>
-    </div>
+  </div>
+  <div class="text-base font-semibold text-secondary">
+    <a href="{{ serviceLink }}">Find out more</a>
+  </div>
 </div>

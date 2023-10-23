@@ -10,6 +10,7 @@ import { ServicesSectionComponent } from './components/services-section/services
 import { ServiceCardComponent } from './components/service-card/service-card.component';
 import { QuickMotorRenewalComponent } from './components/quick-motor-renewal/quick-motor-renewal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DownloadAppBannerComponent } from './components/download-app-banner/download-app-banner.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ServicesSectionComponent,
     ServiceCardComponent,
     QuickMotorRenewalComponent,
+    DownloadAppBannerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],

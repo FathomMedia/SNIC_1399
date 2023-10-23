@@ -34,3 +34,7 @@
 .btn-text {
   @apply text-secondary brightness-100 hover:brightness-125 duration-150;
 }
+
+body {
+  @apply bg-[#F5F5F5];
+}

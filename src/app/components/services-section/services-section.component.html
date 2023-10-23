@@ -1,10 +1,14 @@
-<div class=" justify-center text-center py-14 mt-14">
-    <p class=" text-primary text-5xl font-bold">Your Protection</p>
-    <p class=" text-primary text-5xl font-normal">Starts Here</p>
+<div class="justify-center text-center py-14 mt-14">
+  <p class="text-5xl font-bold text-primary">Your Protection</p>
+  <p class="text-5xl font-normal text-primary">Starts Here</p>
 </div>
-<div class=" flex justify-center gap-4 px-24">
-    <div *ngFor="let service of serviceData">
-        <app-service-card serviceIcon={{service.icon}} serviceTitle={{service.title}}
-            serviceDescription={{service.description}}></app-service-card>
-    </div>
+<div
+  class="grid grid-cols-1 gap-4 px-10 mb-24 md:px-24 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+>
+  <app-service-card
+    *ngFor="let service of serviceData"
+    serviceIcon="{{ service.icon }}"
+    serviceTitle="{{ service.title }}"
+    serviceDescription="{{ service.description }}"
+  ></app-service-card>
 </div>
