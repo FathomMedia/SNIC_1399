@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,16 @@ import { ServiceCardComponent } from './components/service-card/service-card.com
 import { QuickMotorRenewalComponent } from './components/quick-motor-renewal/quick-motor-renewal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DownloadAppBannerComponent } from './components/download-app-banner/download-app-banner.component';
+import { TranslatePipe } from './translate.pipe';
+import { TranslateService } from './translate.service';
+import { HttpClientModule } from '@angular/common/http';
+
+//register translate service provider
+export function setupTranslateServiceFactory(
+  service: TranslateService
+): Function {
+  return () => service.use('en');
+}
 
 @NgModule({
   declarations: [
@@ -22,9 +32,23 @@ import { DownloadAppBannerComponent } from './components/download-app-banner/dow
     ServiceCardComponent,
     QuickMotorRenewalComponent,
     DownloadAppBannerComponent,
+    TranslatePipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  providers: [
+    TranslateService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateServiceFactory, //triggers to load default locale file before anything else
+      deps: [TranslateService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
