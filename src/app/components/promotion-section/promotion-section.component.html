@@ -1,1 +1,47 @@
-<p>promotion-section works!</p>
+<div class="px-10 py-40 md:px-24">
+  <div
+    id="offer"
+    class="container grid grid-cols-1 gap-10 mx-auto lg:grid-cols-2"
+  >
+    <!-- text -->
+    <div
+      class="flex flex-col justify-center w-full max-w-lg gap-4 mx-auto text-center lg:text-start lg:mr-0"
+    >
+      <h2
+        class="font-bold text-4xl flex flex-col capitalize text-center lg:text-start leading-[2.5rem] tracking-wider text-primary"
+      >
+        <span>Summer Offers</span><span>Are Here!</span>
+      </h2>
+      <p class="text-lg font-light leading-7 tracking-tight text-slate-600">
+        Etiam condimentum duis molestie malesuada volutpat pellentesque sed.
+        Ornare suspendisse ut ac neque lobortis sed tincidunt. Mi tempus quis
+        massa tellus imperdiet aenean nulla id.
+      </p>
+
+      <a class="btn-text" href="#offer"
+        >Use code <span class="font-bold">SUMMER10</span> to redeem the offer</a
+      >
+    </div>
+
+    <!-- images -->
+    <div
+      class="grid grid-cols-3 h-96 lg:h-[464px] gap-4 relative place-items-center w-fit ml-auto mx-auto"
+    >
+      <div
+        class="flex flex-col self-end h-72 lg:h-96 rounded-2xl overflow-clip max-w-[200px]"
+      >
+        <img class="object-cover w-full h-full" [src]="offer1" alt="Offers" />
+      </div>
+      <div
+        class="flex flex-col self-start bg-green-30 h-72 lg:h-96 rounded-2xl overflow-clip max-w-[200px]"
+      >
+        <img class="object-cover w-full h-full" [src]="offer2" alt="Offers" />
+      </div>
+      <div
+        class="flex flex-col self-center bg-green-30 h-72 lg:h-96 rounded-2xl overflow-clip max-w-[200px]"
+      >
+        <img class="object-cover w-full h-full" [src]="offer3" alt="Offers" />
+      </div>
+    </div>
+  </div>
+</div>
