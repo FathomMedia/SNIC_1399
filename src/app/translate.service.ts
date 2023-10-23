@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class TranslateService {
   data: any = {};
+  SUPPORTED_LANGUAGES: string[] = ['en', 'ar'];
 
   constructor(private http: HttpClient) {}
 
@@ -12,11 +13,6 @@ export class TranslateService {
   use(lang: string): Promise<{}> {
     return new Promise((resolve) => {
       const langPath = `assets/locales/${lang || 'en'}.json`;
-
-      // console.log(
-      //   '🚀 ~ file: translate.service.ts:16 ~ TranslateService ~ returnnewPromise ~ langPath:',
-      //   langPath
-      // );
       this.http.get(langPath).subscribe({
         next: (response) => {
           this.data = response || {};
@@ -29,5 +25,16 @@ export class TranslateService {
         complete: () => console.info('Translation complete'),
       });
     });
+  }
+
+  //get user's preferred/browser language
+  getLanguage() {
+    const deviceLanguage =
+      navigator.language?.substring(0, 2) ||
+      window?.navigator.language?.substring(0, 2);
+
+    return this.SUPPORTED_LANGUAGES.includes(deviceLanguage)
+      ? deviceLanguage
+      : 'en';
   }
 }

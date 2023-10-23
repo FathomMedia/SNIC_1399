@@ -9,7 +9,7 @@ import { TranslateService } from './translate.service';
 export class AppComponent {
   title = 'SNIC_1399';
 
-  //test translate service
+  //test
   constructor(translateService: TranslateService) {
     console.log(translateService.data);
   }

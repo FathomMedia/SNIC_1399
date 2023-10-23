@@ -14,7 +14,7 @@ export class NavBarComponent {
   public navSearch: string = 'assets/icons/search.svg';
   public navMenu: string = 'assets/icons/menu.svg';
   public navClose: string = 'assets/icons/close.svg';
-  public currentLanguage: string = 'en';
+  public currentLanguage: string = this.translateService.getLanguage();
 
   public pagesLinks: {
     name: string;
