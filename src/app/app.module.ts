@@ -11,8 +11,8 @@ import { ServiceCardComponent } from './components/service-card/service-card.com
 import { QuickMotorRenewalComponent } from './components/quick-motor-renewal/quick-motor-renewal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DownloadAppBannerComponent } from './components/download-app-banner/download-app-banner.component';
-import { TranslatePipe } from './translate.pipe';
-import { TranslateService } from './translate.service';
+import { TranslatePipe } from './services/translation-service/translate.pipe';
+import { TranslateService } from './services/translation-service/translate.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PromotionSectionComponent } from './components/promotion-section/promotion-section.component';
 

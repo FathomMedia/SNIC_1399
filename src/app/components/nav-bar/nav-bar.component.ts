@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslateService } from 'src/app/translate.service';
+import { TranslateService } from 'src/app/services/translation-service/translate.service';
 
 @Component({
   selector: 'app-nav-bar',
