@@ -14,6 +14,7 @@ import { DownloadAppBannerComponent } from './components/download-app-banner/dow
 import { TranslatePipe } from './translate.pipe';
 import { TranslateService } from './translate.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PromotionSectionComponent } from './components/promotion-section/promotion-section.component';
 
 //register translate service provider
 export function setupTranslateServiceFactory(
@@ -32,6 +33,7 @@ export function setupTranslateServiceFactory(
     ServiceCardComponent,
     QuickMotorRenewalComponent,
     DownloadAppBannerComponent,
+    PromotionSectionComponent,
     TranslatePipe,
   ],
   imports: [
