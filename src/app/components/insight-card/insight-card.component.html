@@ -1,0 +1,29 @@
+<div class="flex flex-col h-full bg-white rounded-2xl overflow-clip">
+  <!-- image -->
+  <div class="relative w-full aspect-[4/3]">
+    <img
+      [src]="insight.img"
+      alt="insight image"
+      class="object-cover w-full h-full"
+    />
+  </div>
+
+  <!-- content -->
+  <div class="flex flex-col justify-between gap-6 p-6 grow">
+    <div>
+      <h4
+        class="text-lg font-bold leading-tight grow shrink basis-0 text-sky-900"
+      >
+        {{ insight.title }}
+      </h4>
+      <p class="text-sm font-normal leading-5 tracking-tight text-slate-600">
+        {{ insight.desc }}
+      </p>
+    </div>
+    <a
+      class="text-sm font-semibold leading-normal text-primary"
+      [href]="insight.link"
+      >Read article</a
+    >
+  </div>
+</div>

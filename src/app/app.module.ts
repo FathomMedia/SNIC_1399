@@ -15,6 +15,8 @@ import { TranslatePipe } from './services/translation-service/translate.pipe';
 import { TranslateService } from './services/translation-service/translate.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PromotionSectionComponent } from './components/promotion-section/promotion-section.component';
+import { LatestInsightsComponent } from './components/latest-insights/latest-insights.component';
+import { InsightCardComponent } from './components/insight-card/insight-card.component';
 
 //register translate service provider
 export function setupTranslateServiceFactory(
@@ -35,6 +37,8 @@ export function setupTranslateServiceFactory(
     DownloadAppBannerComponent,
     PromotionSectionComponent,
     TranslatePipe,
+    LatestInsightsComponent,
+    InsightCardComponent,
   ],
   imports: [
     BrowserModule,
