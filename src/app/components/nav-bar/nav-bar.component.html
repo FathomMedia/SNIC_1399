@@ -53,6 +53,26 @@
       <img class="w-full h-full" [src]="navClose" alt="Close" />
     </button>
   </div>
+  <!-- login & lang -->
+  <div class="flex items-center justify-between">
+    <!-- lang switcher-->
+    <div>
+      <button *ngIf="currentLanguage !== 'en'" type="button" (click)="toggleLanguage()"
+        class="items-center h-8 gap-2 p-2 text-white rounded-full flex hover:bg-white/30 min-w-fit">
+        <!-- lang icon btn -->
+        <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+        <p>EN</p>
+      </button>
+      <button type="button" *ngIf="currentLanguage == 'en'" (click)="toggleLanguage()"
+        class="items-center h-8 gap-2 p-2 text-white rounded-full flex hover:bg-white/30 min-w-fit">
+        <!-- lang icon btn -->
+        <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+        <p>AR</p>
+      </button>
+    </div>
+    <!-- hamburger menu - login button -->
+    <button class="btn-primary" type="button">Login</button>
+  </div>
   <!-- links -->
   <div
     class="grid items-center justify-between grid-cols-1 gap-10 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
