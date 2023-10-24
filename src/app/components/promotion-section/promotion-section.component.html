@@ -1,11 +1,11 @@
 <div class="px-10 py-40 md:px-24">
   <div
     id="offer"
-    class="container grid grid-cols-1 gap-10 mx-auto lg:grid-cols-2"
+    class="container grid grid-cols-1 gap-10 mx-auto scroll-m-10 lg:grid-cols-2"
   >
     <!-- text -->
     <div
-      class="flex flex-col justify-center w-full max-w-lg gap-4 mx-auto text-center lg:text-start lg:mr-auto"
+      class="flex flex-col items-center justify-center w-full max-w-lg gap-4 mx-auto text-center lg:items-start lg:text-start lg:mr-auto"
     >
       <h2
         class="font-bold text-4xl flex flex-col capitalize text-center lg:text-start leading-[2.5rem] tracking-wider text-primary"
@@ -18,9 +18,11 @@
         massa tellus imperdiet aenean nulla id.
       </p>
 
-      <a class="btn-text" href="#offer"
-        >Use code <span class="font-bold">SUMMER10</span> to redeem the offer</a
-      >
+      <app-arrow-link class="text-secondary" href="#offer">
+        <p>
+          Use code <span class="font-bold">SUMMER10</span> to redeem the offer
+        </p>
+      </app-arrow-link>
     </div>
 
     <!-- images -->

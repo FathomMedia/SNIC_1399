@@ -1,14 +1,25 @@
-<div class="flex flex-col h-full gap-4 p-6 bg-white rounded-2xl">
+<a
+  [href]="serviceLink"
+  class="flex flex-col h-full gap-4 p-6 duration-300 bg-white rounded-2xl group hover:bg-primary"
+>
   <div class="flex flex-col gap-4 grow">
-    <img src="{{ serviceIcon }}" alt="" class="w-14 h-14" />
-    <div class="text-lg font-bold text-primary">
+    <div
+      class="flex flex-col items-center justify-center p-3 text-white group-hover:text-primary rounded-2xl w-14 h-14 bg-gradient-to-b from-gradient1 to-gradient2 group-hover:from-white group-hover:to-white"
+    >
+      <svg-icon
+        class="flex flex-col items-center justify-center w-full h-full"
+        [src]="serviceIcon"
+        alt="icon"
+      />
+    </div>
+    <div class="text-lg font-bold text-primary group-hover:text-white">
       <p>{{ serviceTitle }}</p>
     </div>
-    <div class="text-sm font-normal text-slate-500">
+    <div class="text-sm font-normal text-slate-500 group-hover:text-slate-300">
       <p>{{ serviceDescription }}</p>
     </div>
   </div>
-  <div class="text-base font-semibold text-secondary">
-    <a href="{{ serviceLink }}">Find out more</a>
+  <div class="text-base font-semibold text-secondary group-hover:text-white">
+    <app-arrow-link [href]="serviceLink">Find out more</app-arrow-link>
   </div>
-</div>
+</a>

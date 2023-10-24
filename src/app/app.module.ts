@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PromotionSectionComponent } from './components/promotion-section/promotion-section.component';
 import { LatestInsightsComponent } from './components/latest-insights/latest-insights.component';
 import { InsightCardComponent } from './components/insight-card/insight-card.component';
+import { ArrowLinkComponent } from './components/arrow-link/arrow-link.component';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 //register translate service provider
 export function setupTranslateServiceFactory(
@@ -39,12 +41,14 @@ export function setupTranslateServiceFactory(
     TranslatePipe,
     LatestInsightsComponent,
     InsightCardComponent,
+    ArrowLinkComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [
     TranslateService,

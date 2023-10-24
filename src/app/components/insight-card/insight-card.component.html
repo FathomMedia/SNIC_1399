@@ -1,4 +1,7 @@
-<div class="flex flex-col h-full bg-white rounded-2xl overflow-clip">
+<a
+  [href]="insight.link"
+  class="flex flex-col h-full duration-300 bg-white shadow-none rounded-2xl overflow-clip hover:-translate-y-4 hover:shadow-xl group"
+>
   <!-- image -->
   <div class="relative w-full aspect-[4/3]">
     <img
@@ -20,10 +23,10 @@
         {{ insight.desc }}
       </p>
     </div>
-    <a
+    <app-arrow-link
       class="text-sm font-semibold leading-normal text-primary"
       [href]="insight.link"
-      >Read article</a
+      >Read article</app-arrow-link
     >
   </div>
-</div>
+</a>
