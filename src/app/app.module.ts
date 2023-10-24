@@ -19,6 +19,7 @@ import { LatestInsightsComponent } from './components/latest-insights/latest-ins
 import { InsightCardComponent } from './components/insight-card/insight-card.component';
 import { ArrowLinkComponent } from './components/arrow-link/arrow-link.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { FooterSectionComponent } from './components/footer-section/footer-section.component';
 
 //register translate service provider
 export function setupTranslateServiceFactory(
@@ -42,6 +43,7 @@ export function setupTranslateServiceFactory(
     LatestInsightsComponent,
     InsightCardComponent,
     ArrowLinkComponent,
+    FooterSectionComponent,
   ],
   imports: [
     BrowserModule,
