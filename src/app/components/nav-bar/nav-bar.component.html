@@ -67,9 +67,8 @@
       <!-- actions -->
       <div class="flex items-center gap-3">
         <button
-          *ngIf="currentLanguage !== 'en'"
+          *ngIf="false"
           type="button"
-          (click)="toggleLanguage()"
           class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit"
         >
           <!-- lang icon btn -->
@@ -82,8 +81,7 @@
         </button>
         <button
           type="button"
-          *ngIf="currentLanguage == 'en'"
-          (click)="toggleLanguage()"
+          *ngIf="true"
           class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit"
         >
           <!-- lang icon btn -->
@@ -146,9 +144,7 @@
       <!-- lang switcher-->
       <div>
         <button
-          *ngIf="currentLanguage !== 'en'"
           type="button"
-          (click)="toggleLanguage()"
           class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
         >
           <!-- lang icon btn -->
@@ -161,8 +157,6 @@
         </button>
         <button
           type="button"
-          *ngIf="currentLanguage == 'en'"
-          (click)="toggleLanguage()"
           class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
         >
           <!-- lang icon btn -->

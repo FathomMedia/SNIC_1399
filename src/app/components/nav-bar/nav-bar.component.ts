@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from 'src/app/services/translation-service/translate.service';
 
 type NavLink = {
   name: string;
@@ -15,15 +14,12 @@ type NavLink = {
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  constructor(public translateService: TranslateService) {}
-
   public navBarLogo: string = 'assets/images/logo-white.png';
   public navBarLogoDark: string = 'assets/images/logo-dark.png';
   public navGlobe: string = 'assets/icons/globe.svg';
   public navSearch: string = 'assets/icons/search.svg';
   public navMenu: string = 'assets/icons/menu.svg';
   public navClose: string = 'assets/icons/close.svg';
-  public currentLanguage: string = this.translateService.getLanguage();
 
   public pagesLinks: NavLink[] = [
     {
@@ -164,14 +160,5 @@ export class NavBarComponent {
    */
   public toggleMenu() {
     this.isMenuOverlayOpen = !this.isMenuOverlayOpen;
-  }
-
-  setLang(lang: string) {
-    this.translateService.use(lang);
-  }
-
-  public toggleLanguage() {
-    this.currentLanguage = this.currentLanguage == 'en' ? 'ar' : 'en';
-    this.setLang(this.currentLanguage);
   }
 }

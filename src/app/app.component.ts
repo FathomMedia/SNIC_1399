@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from './services/translation-service/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +7,4 @@ import { TranslateService } from './services/translation-service/translate.servi
 })
 export class AppComponent {
   title = 'SNIC_1399';
-
-  //test
-  constructor(translateService: TranslateService) {
-    console.log(translateService.data);
-  }
 }
