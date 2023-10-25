@@ -1,60 +1,117 @@
-<div class="flex justify-between w-full p-4 gap-14">
-  <div class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
-    <!-- logo -->
-    <img
-      class="object-contain w-full h-full"
-      [src]="navBarLogo"
-      alt="Snic Logo"
-    />
-  </div>
-  <!-- links -->
-  <div class="flex-wrap items-center hidden 2xl:flex grow gap-9">
-    <a
-      class="text-sm font-light text-white duration-150 hover:underline"
-      *ngFor="let link of pagesLinks"
-      [routerLink]="link.href"
-      routerLinkActive="!font-bold"
-      >{{ link.name }}</a
+<!-- menu -->
+
+<div class="absolute top-0 left-0 right-0 z-40">
+  <div class="container mx-auto">
+    <div
+      class="flex justify-between w-full p-4 px-10 py-6 mx-auto duration-300 text-white hover:text-primary rounded-b-[3rem] bg-white bg-opacity-0 gap-14 group/nav hover:bg-opacity-100"
     >
-  </div>
-  <!-- actions -->
-  <div class="flex items-center gap-3">
-    <button
-      *ngIf="currentLanguage !== 'en'"
-      type="button"
-      (click)="toggleLanguage()"
-      class="items-center hidden h-8 gap-2 p-2 text-white rounded-full md:flex hover:bg-white/30 min-w-fit"
-    >
-      <!-- lang icon btn -->
-      <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
-      <p>EN</p>
-    </button>
-    <button
-      type="button"
-      *ngIf="currentLanguage == 'en'"
-      (click)="toggleLanguage()"
-      class="items-center hidden h-8 gap-2 p-2 text-white rounded-full md:flex hover:bg-white/30 min-w-fit"
-    >
-      <!-- lang icon btn -->
-      <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
-      <p>AR</p>
-    </button>
-    <!-- search icon btn -->
-    <button
-      type="button"
-      class="relative w-8 h-8 p-2 rounded-full aspect-square hover:bg-white/30"
-    >
-      <img class="w-full h-full" [src]="navSearch" alt="Search" />
-    </button>
-    <!-- menu icon btn -->
-    <button
-      (click)="toggleMenu()"
-      type="button"
-      class="relative w-8 h-8 p-1 rounded-full 2xl:hidden aspect-square hover:bg-white/30"
-    >
-      <img class="w-full h-full" [src]="navMenu" alt="Open Menu" />
-    </button>
-    <button class="hidden btn-primary md:block" type="button">Login</button>
+      <a routerLink="/" class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
+        <!-- logo -->
+        <img
+          class="object-contain w-full h-full group-hover/nav:hidden"
+          [src]="navBarLogo"
+          alt="Snic Logo"
+        />
+        <img
+          class="hidden object-contain w-full h-full group-hover/nav:block"
+          [src]="navBarLogoDark"
+          alt="Snic Logo"
+        />
+      </a>
+      <!-- links -->
+      <div class="flex-wrap items-center hidden 2xl:flex grow gap-9">
+        <div
+          *ngFor="let link of pagesLinks"
+          class="group/link hover:text-secondary"
+        >
+          <app-arrow-link
+            class="text-sm font-light duration-100 hover:underline"
+            [routerLink]="link.href"
+            routerLinkActive="!font-bold"
+            >{{ link.name }}</app-arrow-link
+          >
+          <div
+            *ngIf="link.subLinks"
+            class="absolute hidden grid-cols-3 gap-6 p-6 bg-white text-primary rounded-3xl w-fit group-hover/link:grid chicken"
+          >
+            <div
+              *ngFor="let subLink of link.subLinks"
+              class="flex flex-col gap-3 hover:text-secondary"
+            >
+              <div class="flex items-center justify-start gap-3">
+                <app-arrow-link class="w-fit" [routerLink]="subLink.href"
+                  ><div
+                    class="flex flex-col items-center justify-center w-6 h-6"
+                  >
+                    <svg-icon class="w-4" [src]="subLink.logo ?? navMenu" />
+                  </div>
+                  {{ subLink.name }}</app-arrow-link
+                >
+              </div>
+              <div *ngIf="subLink.subLinks" class="flex flex-col gap-2">
+                <app-arrow-link
+                  class="text-sm font-light text-slate-500 hover:text-secondary/70"
+                  *ngFor="let subTheSub of subLink.subLinks"
+                  [routerLink]="subTheSub.href"
+                  >{{ subTheSub.name }}</app-arrow-link
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            *ngIf="link.subLinks"
+            class="fixed top-0 left-0 hidden w-screen h-screen pointer-events-none bg-black/50 -z-10 group-hover/link:block"
+          ></div>
+        </div>
+      </div>
+      <!-- actions -->
+      <div class="flex items-center gap-3">
+        <button
+          *ngIf="currentLanguage !== 'en'"
+          type="button"
+          (click)="toggleLanguage()"
+          class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit"
+        >
+          <!-- lang icon btn -->
+          <svg-icon
+            class="w-full h-full"
+            [src]="navGlobe"
+            alt="Language switcher"
+          />
+          <p>EN</p>
+        </button>
+        <button
+          type="button"
+          *ngIf="currentLanguage == 'en'"
+          (click)="toggleLanguage()"
+          class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit"
+        >
+          <!-- lang icon btn -->
+          <svg-icon
+            class="w-full h-full"
+            [src]="navGlobe"
+            alt="Language switcher"
+          />
+          <p>AR</p>
+        </button>
+        <!-- search icon btn -->
+        <button
+          type="button"
+          class="relative w-8 h-8 p-2 rounded-full aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10"
+        >
+          <svg-icon class="w-full h-full" [src]="navSearch" alt="Search" />
+        </button>
+        <!-- menu icon btn -->
+        <button
+          (click)="toggleMenu()"
+          type="button"
+          class="relative w-8 h-8 p-1 rounded-full 2xl:hidden aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10"
+        >
+          <svg-icon class="w-full h-full" [src]="navMenu" alt="Open Menu" />
+        </button>
+        <button class="hidden btn-primary md:block" type="button">Login</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -95,7 +152,11 @@
           class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
         >
           <!-- lang icon btn -->
-          <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+          <svg-icon
+            class="w-full h-full"
+            [src]="navGlobe"
+            alt="Language switcher"
+          />
           <p>EN</p>
         </button>
         <button
@@ -105,7 +166,11 @@
           class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
         >
           <!-- lang icon btn -->
-          <img class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+          <svg-icon
+            class="w-full h-full"
+            [src]="navGlobe"
+            alt="Language switcher"
+          />
           <p>AR</p>
         </button>
       </div>
