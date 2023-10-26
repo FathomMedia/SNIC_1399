@@ -32,6 +32,7 @@
             routerLinkActive="!font-bold"
             >{{ link.name }}</app-arrow-link
           >
+          <!-- sub links -->
           <div
             *ngIf="link.subLinks"
             class="absolute flex top-0 left-0 right-0 -translate-y-full -z-10 p-6 pb-12 pt-32 bg-white text-primary rounded-b-[3rem] group-hover/link:translate-y-0 duration-300 opacity-0 group-hover/link:opacity-100"
@@ -51,6 +52,7 @@
                     {{ subLink.name }}</app-arrow-link
                   >
                 </div>
+                <!-- sub sub links -->
                 <div *ngIf="subLink.subLinks" class="flex flex-col gap-2">
                   <app-arrow-link
                     class="text-sm font-light text-slate-500 hover:text-secondary/70"
@@ -111,7 +113,13 @@
         >
           <svg-icon class="w-full h-full" [src]="navMenu" alt="Open Menu" />
         </button>
-        <button class="hidden btn-primary md:block" type="button">Login</button>
+        <!-- Login -->
+        <button
+          class="hidden btn-primary md:block group-hover/nav:border-primary group-hover/nav:hover:bg-primary/20"
+          type="button"
+        >
+          Login
+        </button>
       </div>
     </div>
   </div>

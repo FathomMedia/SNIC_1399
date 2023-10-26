@@ -1,9 +1,9 @@
 <form
   [formGroup]="renewalForm"
   (ngSubmit)="handleSubmit()"
-  class="bg-white/70 px-6 py-10 flex flex-col gap-8 rounded-3xl backdrop-blur-sm"
+  class="flex flex-col gap-8 px-6 py-10 bg-white/70 rounded-3xl backdrop-blur-sm"
 >
-  <h3 class="text-primary font-semibold">Quick Motor Renewal</h3>
+  <h3 class="font-semibold text-primary">Quick Motor Renewal</h3>
   <!-- fields -->
   <div class="flex flex-col gap-6">
     <!-- plate no -->
@@ -14,10 +14,10 @@
         type="text"
         formControlName="plateNo"
         placeholder="Enter your plate number"
-        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm"
+        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm text-primary"
       />
       <p
-        class="text-red-600 text-xs mt-1"
+        class="mt-1 text-xs text-red-600"
         *ngIf="renewalForm.controls.plateNo.touched && renewalForm.controls.plateNo.errors?.['required']"
       >
         Plate number is required
@@ -31,10 +31,10 @@
         type="text"
         formControlName="cpr"
         placeholder="Enter your personal ID"
-        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm"
+        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm text-primary"
       />
       <p
-        class="text-red-600 text-xs mt-1"
+        class="mt-1 text-xs text-red-600"
         *ngIf="renewalForm.controls.cpr.touched && renewalForm.controls.plateNo.errors?.['required']"
       >
         CPR is required
@@ -42,5 +42,5 @@
     </div>
   </div>
 
-  <button class="btn-gradient w-full" type="submit">Renew Policy</button>
+  <button class="w-full btn-gradient" type="submit">Renew Policy</button>
 </form>
