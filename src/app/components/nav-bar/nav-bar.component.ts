@@ -4,7 +4,7 @@ import { LanguagesService } from 'src/app/services/languages.service';
 
 type NavLink = {
   name: string;
-  href: string;
+  href?: string;
   isActive?: boolean;
   logo?: string;
   subLinks?: NavLink[];
@@ -36,7 +36,7 @@ export class NavBarComponent {
     },
     {
       name: 'Individual',
-      href: '/individual',
+
       isActive: false,
       subLinks: [
         {
@@ -86,14 +86,12 @@ export class NavBarComponent {
         },
         {
           name: 'Saving Ghady',
-          href: '#',
           logo: 'assets/icons/cash.svg',
         },
       ],
     },
     {
       name: 'Corporate',
-      href: '/corporate',
       isActive: false,
       subLinks: [
         {
