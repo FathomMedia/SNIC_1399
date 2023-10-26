@@ -6,9 +6,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguagesService {
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('en');
-    let defaultLang = localStorage.getItem('lang') ?? 'en';
-    translate.setDefaultLang(defaultLang);
+    let tempLang = localStorage.getItem('lang');
+
+    if (tempLang) {
+      translate.setDefaultLang(tempLang);
+      this.chosenLanguage = tempLang;
+    } else {
+      localStorage.setItem('lang', 'en');
+      translate.setDefaultLang('en');
+      this.chosenLanguage = 'en';
+    }
   }
 
   public chosenLanguage: string =

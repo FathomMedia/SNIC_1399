@@ -25,6 +25,7 @@ export class NavBarComponent {
   public navSearch: string = 'assets/icons/search.svg';
   public navMenu: string = 'assets/icons/menu.svg';
   public navClose: string = 'assets/icons/close.svg';
+  public isMenuOverlayOpen: boolean = false;
 
   public isRootPage = this.route.url === '/';
 
@@ -157,8 +158,6 @@ export class NavBarComponent {
       isActive: false,
     },
   ];
-
-  public isMenuOverlayOpen: boolean = false;
 
   /**
    * toggleMenu

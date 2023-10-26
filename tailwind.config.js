@@ -18,6 +18,9 @@ module.exports = {
       fontFamily: {
         sans: ['"Proxima Nova"', ...defaultTheme.fontFamily.sans],
       },
+      scale: {
+        "-100": "-1",
+      },
     },
   },
   plugins: [require("daisyui")],
