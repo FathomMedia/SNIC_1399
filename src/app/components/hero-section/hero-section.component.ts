@@ -8,5 +8,6 @@ import { LanguagesService } from 'src/app/services/languages.service';
 })
 export class HeroSectionComponent {
   constructor(private language: LanguagesService) {}
-  public heroVideo: string = 'assets/videos/hero-video.mp4';
+  public heroVideo: string =
+    'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698312536/SNIC_1399/hero-video_uubqzn.mp4';
 }
