@@ -27,11 +27,19 @@
           class="px-4 py-10 group/link hover:text-secondary"
         >
           <app-arrow-link
+            *ngIf="link.subLinks == undefined"
             class="z-20 text-sm font-light duration-100 hover:underline"
             [routerLink]="link.href"
             routerLinkActive="!font-bold"
             >{{ link.name }}</app-arrow-link
           >
+          <p
+            *ngIf="link.subLinks"
+            class="z-20 text-sm font-light duration-100"
+            routerLinkActive="!font-bold"
+          >
+            {{ link.name }}
+          </p>
           <!-- sub links -->
           <div
             *ngIf="link.subLinks"
@@ -42,7 +50,7 @@
                 *ngFor="let subLink of link.subLinks"
                 class="flex flex-col max-w-3xl gap-3 hover:text-secondary"
               >
-                <div class="flex items-center justify-start gap-3">
+                <div class="flex items-center justify-start gap-4">
                   <app-arrow-link class="w-fit" [routerLink]="subLink.href"
                     ><div
                       class="flex flex-col items-center justify-center w-6 h-6"
@@ -128,13 +136,13 @@
 <!-- menu overlay -->
 <div
   [ngClass]="[
-    'duration-300 absolute top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
+    'duration-300 flex flex-col fixed top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
     isMenuOverlayOpen
       ? 'translate-y-0 2xl:-translate-y-full opacity-100'
       : '-translate-y-full'
   ]"
 >
-  <div class="container flex flex-col gap-10 mx-auto">
+  <div class="container flex flex-col gap-10 mx-auto overflow-hidden grow">
     <!-- header -->
     <div class="flex items-center justify-between">
       <h2
@@ -185,16 +193,45 @@
     </div>
     <div class="w-full h-[1px] bg-white"></div>
     <!-- links -->
-    <div
-      class="grid items-center justify-between grid-cols-1 gap-10 place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-    >
-      <a
-        class="text-lg font-light text-white duration-150 hover:underline"
-        *ngFor="let link of pagesLinks"
-        [routerLink]="link.href"
-        routerLinkActive="!font-bold"
-        >{{ link.name }}</a
-      >
+    <div class="overflow-y-scroll grow">
+      <div class="flex flex-col w-full gap-4">
+        <div
+          *ngFor="let link of pagesLinks"
+          class="ui-collapse ui-collapse-plus bg-black/10"
+        >
+          <input
+            *ngIf="link.subLinks"
+            title="link"
+            type="checkbox"
+            name="my-accordion-4"
+          />
+          <p *ngIf="link.subLinks" class="ui-collapse-title">
+            {{ link.name }}
+          </p>
+          <app-arrow-link
+            class="py-3 pl-6"
+            *ngIf="link.subLinks == undefined"
+            [href]="link.href"
+            >{{ link.name }}</app-arrow-link
+          >
+          <div class="flex flex-col gap-2 ui-collapse-content">
+            <div
+              class="flex flex-col gap-0"
+              *ngFor="let subLink of link.subLinks"
+            >
+              <app-arrow-link [href]="subLink.href">{{
+                subLink.name
+              }}</app-arrow-link>
+              <app-arrow-link
+                class="pl-4 text-white/60"
+                *ngFor="let subsub of subLink.subLinks"
+                [href]="subsub.href"
+                >{{ subsub.name }}</app-arrow-link
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
