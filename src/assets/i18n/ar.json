@@ -1,0 +1,23 @@
+{
+  "dir": "rtl",
+  "TITLE": "SNIC_1399/ar",
+  "LandingPage": {
+    "HeroSection": {
+      "discoverTitle": "اكتشف",
+      "title": "خدمات التأمين الخاصة بنا",
+      "Form": {
+        "title": "تجديد سريع للسيارة",
+        "Fields": {
+          "inputPlate": "رقم اللوحة",
+          "entryPlate": "أدخل رقم لوحة السيارة",
+          "inputCPR": "الهوية الشخصية",
+          "entryCPR": "أدخل رقم الهوية الشخصية"
+        }
+      },
+      "Buttons": {
+        "exploreNow": "استكشف الآن",
+        "renewPolicy": "تجديد البوليصة"
+      }
+    }
+  }
+}

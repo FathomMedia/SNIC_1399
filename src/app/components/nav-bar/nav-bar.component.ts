@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguagesService } from 'src/app/services/languages.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
+  constructor(public languages: LanguagesService) {}
+
+  public currentLang: string = this.languages.chosenLanguage;
   public navBarLogo: string = 'assets/images/logo-white.png';
   public navGlobe: string = 'assets/icons/globe.svg';
   public navSearch: string = 'assets/icons/search.svg';
@@ -61,5 +65,13 @@ export class NavBarComponent {
    */
   public toggleMenu() {
     this.isMenuOverlayOpen = !this.isMenuOverlayOpen;
+  }
+
+  public changeLanguage() {
+    this.currentLang == 'en'
+      ? (this.currentLang = 'ar')
+      : (this.currentLang = 'en');
+
+    this.languages.switchLanguage();
   }
 }

@@ -1,0 +1,23 @@
+{
+  "dir": "ltr",
+  "TITLE": "SNIC_1399 (en)",
+  "LandingPage": {
+    "HeroSection": {
+      "discoverTitle": "Discover",
+      "title": "our insurance services",
+      "Form": {
+        "title": "Quick Motor Renewal",
+        "Fields": {
+          "inputPlate": "Plate No.",
+          "entryPlate": "Enter your plate number",
+          "inputCPR": "CPR",
+          "entryCPR": "Enter your personal ID"
+        }
+      },
+      "Buttons": {
+        "exploreNow": "Explore Now",
+        "renewPolicy": "Renew Policy"
+      }
+    }
+  }
+}

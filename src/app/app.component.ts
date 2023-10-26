@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguagesService } from './services/languages.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor(public language: LanguagesService) {}
+
   title = 'SNIC_1399';
 }
