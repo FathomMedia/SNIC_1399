@@ -14,4 +14,6 @@ export class FooterSectionComponent {
   public playStore: string = 'assets/images/playstore.png';
   public instagram: string = 'assets/icons/instagram.svg';
   public linkedin: string = 'assets/icons/linkedin.svg';
+  public phone: string = 'assets/icons/phone.svg';
+  public mail: string = 'assets/icons/mail.svg';
 }
