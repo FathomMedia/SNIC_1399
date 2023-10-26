@@ -1,32 +1,63 @@
 <!-- menu -->
 
 <div
-  [ngClass]="['absolute top-0 left-0 right-0 z-40 duration-300 hover:bg-white rounded-b-[3rem] group/nav',  !isRootPage ?'bg-primary  ' :''] ">
+  [ngClass]="[
+    'absolute top-0 left-0 right-0 z-40 duration-300 hover:bg-white rounded-b-[3rem] group/nav',
+    !isRootPage ? 'bg-primary  ' : ''
+  ]"
+>
   <div class="container mx-auto">
     <div
-      class="flex items-center justify-between w-full px-10 mx-auto text-white max-2xl:py-6 group-hover/nav:text-primary gap-14">
+      class="flex items-center justify-between w-full px-10 mx-auto text-white max-2xl:py-6 group-hover/nav:text-primary gap-14"
+    >
       <a routerLink="/" class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
         <!-- logo -->
-        <img class="object-contain w-full h-full group-hover/nav:hidden" [src]="navBarLogo" alt="Snic Logo" />
-        <img class="hidden object-contain w-full h-full group-hover/nav:block" [src]="navBarLogoDark" alt="Snic Logo" />
+        <img
+          class="object-contain w-full h-full group-hover/nav:hidden"
+          [src]="navBarLogo"
+          alt="Snic Logo"
+        />
+        <img
+          class="hidden object-contain w-full h-full group-hover/nav:block"
+          [src]="navBarLogoDark"
+          alt="Snic Logo"
+        />
       </a>
       <!-- links -->
       <div class="flex-wrap items-center hidden 2xl:flex grow">
-        <div *ngFor="let link of pagesLinks" class="px-4 py-10 group/link hover:text-secondary">
-          <app-arrow-link *ngIf="link.subLinks == undefined"
-            class="z-20 text-sm font-light duration-100 hover:underline" [routerLink]="link.href"
-            routerLinkActive="!font-bold">{{ link.name }}</app-arrow-link>
-          <p *ngIf="link.subLinks" class="z-20 text-sm font-light duration-100" routerLinkActive="!font-bold">
+        <div
+          *ngFor="let link of pagesLinks"
+          class="px-4 py-10 group/link hover:text-secondary"
+        >
+          <app-arrow-link
+            *ngIf="link.subLinks == undefined"
+            class="z-20 text-sm font-light duration-100 hover:underline"
+            [href]="link.href"
+            routerLinkActive="!font-bold"
+            >{{ link.name }}</app-arrow-link
+          >
+          <p
+            *ngIf="link.subLinks"
+            class="z-20 text-sm font-light duration-100"
+            routerLinkActive="!font-bold"
+          >
             {{ link.name }}
           </p>
           <!-- sub links -->
-          <div *ngIf="link.subLinks"
-            class="absolute flex top-0 left-0 right-0 -translate-y-full -z-10 p-6 pb-12 pt-32 bg-white text-primary rounded-b-[3rem] group-hover/link:translate-y-0 duration-300 opacity-0 group-hover/link:opacity-100">
+          <div
+            *ngIf="link.subLinks"
+            class="absolute flex top-0 left-0 right-0 -translate-y-full -z-10 p-6 pb-12 pt-32 bg-white text-primary rounded-b-[3rem] group-hover/link:translate-y-0 duration-300 opacity-0 group-hover/link:opacity-100"
+          >
             <div class="container grid max-w-4xl grid-cols-3 gap-6 mx-auto">
-              <div *ngFor="let subLink of link.subLinks" class="flex flex-col max-w-3xl gap-3 hover:text-secondary">
+              <div
+                *ngFor="let subLink of link.subLinks"
+                class="flex flex-col max-w-3xl gap-3 hover:text-secondary"
+              >
                 <div class="flex items-center justify-start gap-4">
-                  <app-arrow-link class="w-fit" [routerLink]="subLink.href">
-                    <div class="flex flex-col items-center justify-center w-6 h-6">
+                  <app-arrow-link class="w-fit" [href]="subLink.href">
+                    <div
+                      class="flex flex-col items-center justify-center w-6 h-6"
+                    >
                       <svg-icon class="w-4" [src]="subLink.logo ?? navMenu" />
                     </div>
                     {{ subLink.name }}
@@ -34,68 +65,101 @@
                 </div>
                 <!-- sub sub links -->
                 <div *ngIf="subLink.subLinks" class="flex flex-col gap-2">
-                  <app-arrow-link class="text-sm font-light text-slate-500 hover:text-secondary/70"
-                    *ngFor="let subTheSub of subLink.subLinks" [routerLink]="subTheSub.href">{{ subTheSub.name
-                    }}</app-arrow-link>
+                  <app-arrow-link
+                    class="text-sm font-light text-slate-500 hover:text-secondary/70"
+                    *ngFor="let subTheSub of subLink.subLinks"
+                    [href]="subTheSub.href"
+                    >{{ subTheSub.name }}</app-arrow-link
+                  >
                 </div>
               </div>
             </div>
           </div>
-          <div *ngIf="link.subLinks"
-            class="fixed top-0 left-0 hidden w-screen h-screen pointer-events-none bg-black/50 -z-20 group-hover/link:block">
-          </div>
+          <div
+            *ngIf="link.subLinks"
+            class="fixed top-0 left-0 hidden w-screen h-screen pointer-events-none bg-black/50 -z-20 group-hover/link:block"
+          ></div>
         </div>
       </div>
       <!-- actions -->
       <div class="flex items-center gap-3">
-        <button *ngIf="currentLang !== 'en'" (click)="this.changeLanguage()" type="button"
-          class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit">
+        <button
+          *ngIf="currentLang !== 'en'"
+          (click)="this.changeLanguage()"
+          type="button"
+          class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit"
+        >
           <!-- lang icon btn -->
-          <svg-icon class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+          <svg-icon
+            class="w-full h-full"
+            [src]="navGlobe"
+            alt="Language switcher"
+          />
           <p>ENGLISH</p>
         </button>
-        <button type="button" *ngIf="currentLang == 'en'" (click)="this.changeLanguage()"
-          class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit">
+        <button
+          type="button"
+          *ngIf="currentLang == 'en'"
+          (click)="this.changeLanguage()"
+          class="items-center hidden h-8 gap-2 p-2 rounded-full md:flex hover:bg-white/30 group-hover/nav:hover:bg-primary/10 min-w-fit"
+        >
           <!-- lang icon btn -->
-          <svg-icon class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+          <svg-icon
+            class="w-full h-full"
+            [src]="navGlobe"
+            alt="Language switcher"
+          />
           <p>العربية</p>
         </button>
         <!-- search icon btn -->
-        <button type="button"
-          class="relative w-8 h-8 p-2 rounded-full aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10">
+        <button
+          type="button"
+          class="relative w-8 h-8 p-2 rounded-full aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10"
+        >
           <svg-icon class="w-full h-full" [src]="navSearch" alt="Search" />
         </button>
         <!-- menu icon btn -->
-        <button (click)="toggleMenu()" type="button"
-          class="relative w-8 h-8 p-1 rounded-full 2xl:hidden aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10">
+        <button
+          (click)="toggleMenu()"
+          type="button"
+          class="relative w-8 h-8 p-1 rounded-full 2xl:hidden aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10"
+        >
           <svg-icon class="w-full h-full" [src]="navMenu" alt="Open Menu" />
         </button>
         <!-- Login -->
-        <button class="hidden btn-primary md:block group-hover/nav:border-primary group-hover/nav:hover:bg-primary/20"
-          type="button">
+        <button
+          class="hidden btn-primary md:block group-hover/nav:border-primary group-hover/nav:hover:bg-primary/20"
+          type="button"
+        >
           Login
         </button>
       </div>
     </div>
   </div>
 
-
   <!-- menu overlay -->
-  <div [ngClass]="[
-    'duration-300 flex flex-col fixed top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
-    isMenuOverlayOpen
-      ? 'translate-y-0 2xl:-translate-y-full opacity-100'
-      : '-translate-y-full'
-  ]">
+  <div
+    [ngClass]="[
+      'duration-300 flex flex-col fixed top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
+      isMenuOverlayOpen
+        ? 'translate-y-0 2xl:-translate-y-full opacity-100'
+        : '-translate-y-full'
+    ]"
+  >
     <div class="container flex flex-col gap-10 mx-auto overflow-hidden grow">
       <!-- header -->
       <div class="flex items-center justify-between">
-        <h2 class="font-bold text-2xl text-center md:text-start leading-[3rem] tracking-wider text-white max-w-lg">
+        <h2
+          class="font-bold text-2xl text-center md:text-start leading-[3rem] tracking-wider text-white max-w-lg"
+        >
           Menu
         </h2>
         <!-- menu icon btn -->
-        <button (click)="toggleMenu()" type="button"
-          class="relative w-8 h-8 p-1 rounded-full 2xl:hidden aspect-square hover:bg-white/30">
+        <button
+          (click)="toggleMenu()"
+          type="button"
+          class="relative w-8 h-8 p-1 rounded-full 2xl:hidden aspect-square hover:bg-white/30"
+        >
           <img class="w-full h-full" [src]="navClose" alt="Close" />
         </button>
       </div>
@@ -103,16 +167,32 @@
       <div class="flex items-center justify-between">
         <!-- lang switcher-->
         <div>
-          <button type="button" *ngIf="currentLang !== 'en'" (click)="this.changeLanguage()"
-            class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit">
+          <button
+            type="button"
+            *ngIf="currentLang !== 'en'"
+            (click)="this.changeLanguage()"
+            class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
+          >
             <!-- lang icon btn -->
-            <svg-icon class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+            <svg-icon
+              class="w-full h-full"
+              [src]="navGlobe"
+              alt="Language switcher"
+            />
             <p>EN</p>
           </button>
-          <button type="button" *ngIf="currentLang == 'en'" (click)="this.changeLanguage()"
-            class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit">
+          <button
+            type="button"
+            *ngIf="currentLang == 'en'"
+            (click)="this.changeLanguage()"
+            class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
+          >
             <!-- lang icon btn -->
-            <svg-icon class="w-full h-full" [src]="navGlobe" alt="Language switcher" />
+            <svg-icon
+              class="w-full h-full"
+              [src]="navGlobe"
+              alt="Language switcher"
+            />
             <p>ع</p>
           </button>
         </div>
@@ -123,21 +203,39 @@
       <!-- links -->
       <div class="overflow-y-scroll grow">
         <div class="flex flex-col w-full gap-4">
-          <div *ngFor="let link of pagesLinks" class="ui-collapse ui-collapse-plus bg-black/10">
-            <input *ngIf="link.subLinks" title="link" type="checkbox" name="my-accordion-4" />
+          <div
+            *ngFor="let link of pagesLinks"
+            class="ui-collapse ui-collapse-plus bg-black/10"
+          >
+            <input
+              *ngIf="link.subLinks"
+              title="link"
+              type="checkbox"
+              name="my-accordion-4"
+            />
             <p *ngIf="link.subLinks" class="ui-collapse-title">
               {{ link.name }}
             </p>
-            <app-arrow-link class="py-3 px-6" *ngIf="link.subLinks == undefined" [href]="link.href">{{ link.name
-              }}</app-arrow-link>
+            <app-arrow-link
+              class="px-6 py-3"
+              *ngIf="link.subLinks == undefined"
+              [href]="link.href"
+              >{{ link.name }}</app-arrow-link
+            >
             <div class="flex flex-col gap-2 ui-collapse-content">
-              <div class="flex flex-col gap-0" *ngFor="let subLink of link.subLinks">
+              <div
+                class="flex flex-col gap-0"
+                *ngFor="let subLink of link.subLinks"
+              >
                 <app-arrow-link [href]="subLink.href">{{
                   subLink.name
-                  }}</app-arrow-link>
-                <app-arrow-link class="px-4 text-white/60" *ngFor="let subsub of subLink.subLinks"
-                  [href]="subsub.href">{{
-                  subsub.name }}</app-arrow-link>
+                }}</app-arrow-link>
+                <app-arrow-link
+                  class="px-4 text-white/60"
+                  *ngFor="let subsub of subLink.subLinks"
+                  [href]="subsub.href"
+                  >{{ subsub.name }}</app-arrow-link
+                >
               </div>
             </div>
           </div>
@@ -145,3 +243,4 @@
       </div>
     </div>
   </div>
+</div>
