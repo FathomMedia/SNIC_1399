@@ -15,25 +15,25 @@ export class LatestInsightsComponent {
     {
       title: 'Congue velit risus',
       desc: 'Nunc gravida semper tellus neque scelerisque eget tincidunt in.',
-      img: 'assets/images/insight1.png',
+      img: 'assets/images/insight1.jpg',
       link: '#insight',
     },
     {
       title: 'Ut mauris',
       desc: 'Phasellus venenatis massa bibendum posuere dictum tristique.',
-      img: 'assets/images/insight2.png',
+      img: 'assets/images/insight2.jpg',
       link: '#insight',
     },
     {
       title: 'Aliquam tortor nunc',
       desc: 'Leo mollis fermentum praesent in condimentum id velit purus in.',
-      img: 'assets/images/insight3.png',
+      img: 'assets/images/insight3.jpg',
       link: '#insight',
     },
     {
       title: 'Fusce non morbi',
       desc: 'In sed bibendum metus pretium cursus tellus pharetra.',
-      img: 'assets/images/insight4.png',
+      img: 'assets/images/insight4.jpg',
       link: '#insight',
     },
   ];
