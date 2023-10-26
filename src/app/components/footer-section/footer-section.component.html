@@ -122,14 +122,23 @@
     </div>
   </div>
 
-  <!-- bgImage -->
+  <!-- bg Video -->
   <div
-    class="absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b from-gradient1 to-gradient2 -z-10"
+    class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-30"
+  ></div>
+  <video
+    class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-20"
+    autoplay
+    muted
+    loop
+    playsinline
+    (controls)="(false)"
+    (play)="(true)"
   >
-    <img
-      class="object-cover w-full h-full filter mix-blend-multiply"
-      [src]="bgImage"
-      alt="Footer background"
-    />
-  </div>
+    <source [src]="bgVideo" type="video/mp4" />
+  </video>
+  <!-- video overlay -->
+  <div
+    class="absolute -z-10 top-0 right-0 bottom-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(16,37,87,0.59)] to-[rgba(16,37,87,0.00)]"
+  ></div>
 </div>
