@@ -21,6 +21,9 @@ module.exports = {
       scale: {
         "-100": "-1",
       },
+      screens: {
+        "2p5xl": "1440px",
+      },
     },
   },
   plugins: [require("daisyui")],
