@@ -1,14 +1,27 @@
-<!-- menu -->
-
 <div
+  [ngClass]="[
+    'fixed top-0 left-0 duration-300 z-10 isolate w-screen h-screen pointer-events-none bg-black/50',
+    hoveredIndex && pagesLinks[hoveredIndex].subLinks
+      ? 'opacity-100'
+      : 'opacity-0'
+  ]"
+></div>
+
+<!-- menu -->
+<div
+  #nav
+  id="navbarId"
   [ngClass]="[
     'absolute top-0 left-0 right-0 z-40 duration-300 hover:bg-white rounded-b-[3rem] group/nav',
     !isRootPage ? 'bg-primary  ' : ''
   ]"
+  (mouseleave)="onMouseExitHover()"
 >
-  <div class="container mx-auto">
+  <div
+    class="container flex flex-col mx-auto text-white transition-all duration-300 group-hover/nav:text-primary"
+  >
     <div
-      class="flex items-center justify-between w-full px-10 mx-auto text-white max-2xl:py-6 group-hover/nav:text-primary gap-14"
+      class="flex items-center justify-between w-full px-10 mx-auto max-2xl:py-6 gap-14"
     >
       <a routerLink="/" class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
         <!-- logo -->
@@ -24,33 +37,50 @@
         />
       </a>
       <!-- links -->
-      <div class="flex-wrap items-center hidden 2xl:flex grow">
+      <div class="flex-wrap items-center hidden py-10 2xl:flex grow">
         <div
-          *ngFor="let link of pagesLinks"
-          class="px-4 py-10 group/link hover:text-secondary"
+          *ngFor="let link of pagesLinks; index as i"
+          class="px-4 py-3 group/link hover:text-secondary"
         >
           <app-arrow-link
             *ngIf="link.href"
-            class="z-20 text-sm font-light duration-100 hover:underline"
+            class="z-20 flex items-center text-sm font-light duration-100 hover:underline"
             [href]="link.href"
+            [routerLink]="link.href"
             routerLinkActive="!font-bold"
-            >{{ link.name }}</app-arrow-link
+            (mouseenter)="onMouseHover(i)"
           >
-
-          <p
-            *ngIf="link.href == undefined"
-            class="z-20 text-sm font-light duration-100"
-            routerLinkActive="!font-bold"
-          >
-            {{ link.name }}
-          </p>
-
-          <!-- sub links -->
+            {{ link.name
+            }}<svg-icon
+              *ngIf="pagesLinks[i].subLinks"
+              [src]="arrowDown"
+              class="flex flex-col items-center justify-center w-4 h-4"
+            />
+          </app-arrow-link>
           <div
-            *ngIf="link.subLinks"
-            class="absolute flex top-0 left-0 right-0 -translate-y-full -z-10 p-6 pb-12 pt-32 bg-white text-primary rounded-b-[3rem] group-hover/link:translate-y-0 duration-300 opacity-0 group-hover/link:opacity-100"
+            *ngIf="link.href == undefined"
+            class="z-20 flex items-center gap-2 text-sm font-light duration-100 pe-3 hover:underline"
+            (mouseenter)="onMouseHover(i)"
           >
-            <div class="container grid max-w-4xl grid-cols-3 gap-6 mx-auto">
+            {{ link.name
+            }}<svg-icon
+              *ngIf="pagesLinks[i].subLinks"
+              [src]="arrowDown"
+              class="flex flex-col items-center justify-center w-4 h-4"
+            />
+          </div>
+          <!-- subLinks -->
+          <div
+            #subLink
+            [ngClass]="[
+              'pb-3 duration-300 absolute text-primary isolate rounded-b-[3rem] left-0 pt-10 right-0 opacity-0',
+              hoveredIndex === i ? ' opacity-100' : 'pointer-events-none',
+              hoveredIndex && hoveredIndex > i
+                ? 'translate-x-3'
+                : '-translate-x-3'
+            ]"
+          >
+            <div class="grid max-w-4xl grid-cols-3 gap-6 mx-auto">
               <div
                 *ngFor="let subLink of link.subLinks"
                 class="flex flex-col max-w-3xl gap-3 hover:text-secondary"
@@ -102,12 +132,9 @@
               </div>
             </div>
           </div>
-          <div
-            *ngIf="link.subLinks"
-            class="fixed top-0 left-0 hidden w-screen h-screen pointer-events-none bg-black/50 -z-20 group-hover/link:block"
-          ></div>
         </div>
       </div>
+
       <!-- actions -->
       <div class="flex items-center gap-3">
         <button
@@ -122,7 +149,7 @@
             [src]="navGlobe"
             alt="Language switcher"
           />
-          <p>ENGLISH</p>
+          <p class="leading-none">ENGLISH</p>
         </button>
         <button
           type="button"
