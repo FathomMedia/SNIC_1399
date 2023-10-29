@@ -21,7 +21,7 @@
     class="container flex flex-col mx-auto text-white transition-all duration-300 group-hover/nav:text-primary"
   >
     <div
-      class="flex items-center justify-between w-full px-10 mx-auto max-2p5xl:py-6 gap-14"
+      class="flex items-center justify-between w-full px-10 mx-auto max-1p5xl:py-6 gap-14"
     >
       <a routerLink="/" class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
         <!-- logo -->
@@ -37,7 +37,7 @@
         />
       </a>
       <!-- links -->
-      <div class="flex-wrap items-center hidden py-10 2p5xl:flex grow">
+      <div class="flex-wrap items-center hidden py-10 1p5xl:flex grow">
         <div
           *ngFor="let link of pagesLinks; index as i"
           class="px-4 py-3 group/link hover:text-secondary"
@@ -176,7 +176,7 @@
         <button
           (click)="toggleMenu()"
           type="button"
-          class="relative w-8 h-8 p-1 rounded-full 2p5xl:hidden aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10"
+          class="relative w-8 h-8 p-1 rounded-full 1p5xl:hidden aspect-square hover:bg-white/30 group-hover/nav:hover:bg-primary/10"
         >
           <svg-icon class="w-full h-full" [src]="navMenu" alt="Open Menu" />
         </button>
@@ -196,7 +196,7 @@
     [ngClass]="[
       'duration-300 flex flex-col fixed top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
       isMenuOverlayOpen
-        ? 'translate-y-0 2p5xl:-translate-y-full opacity-100'
+        ? 'translate-y-0 1p5xl:-translate-y-full opacity-100'
         : '-translate-y-full'
     ]"
   >
@@ -215,7 +215,7 @@
         <button
           (click)="toggleMenu()"
           type="button"
-          class="relative w-8 h-8 p-1 rounded-full 2p5xl:hidden aspect-square hover:bg-white/30"
+          class="relative w-8 h-8 p-1 rounded-full 1p5xl:hidden aspect-square hover:bg-white/30"
         >
           <img class="w-full h-full" [src]="navClose" alt="Close" />
         </button>

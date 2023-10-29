@@ -22,7 +22,7 @@ module.exports = {
         "-100": "-1",
       },
       screens: {
-        "2p5xl": "1440px",
+        "1p5xl": "1440px",
       },
     },
   },
