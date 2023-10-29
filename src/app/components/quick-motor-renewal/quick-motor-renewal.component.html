@@ -1,33 +1,58 @@
-<form [formGroup]="renewalForm" (ngSubmit)="handleSubmit()"
-  class="bg-white/70 px-6 py-10 flex flex-col gap-8 rounded-3xl backdrop-blur-sm">
-  <h3 class="text-primary font-semibold">{{'LandingPage.HeroSection.Form.title' | translate}}</h3>
+<form
+  [formGroup]="renewalForm"
+  (ngSubmit)="handleSubmit()"
+  class="flex flex-col gap-8 px-6 py-10 bg-white/70 rounded-3xl backdrop-blur-sm"
+>
+  <h3 class="font-semibold text-primary">
+    {{ "LandingPage.HeroSection.Form.title" | translate }}
+  </h3>
   <!-- fields -->
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 text-primary">
     <!-- plate no -->
     <div class="flex flex-col">
-      <label class="text-primary" for="plate-no">{{'LandingPage.HeroSection.Form.Fields.inputPlate' |
-        translate}}</label>
-      <input id="plate-no" type="text" formControlName="plateNo"
-        [placeholder]="'LandingPage.HeroSection.Form.Fields.entryPlate' | translate"
-        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm" />
-      <p class="text-red-600 text-xs mt-1"
-        *ngIf="renewalForm.controls.plateNo.touched && renewalForm.controls.plateNo.errors?.['required']">
-        {{'LandingPage.HeroSection.Form.Fields.entryPlate' | translate}}
+      <label class="text-primary" for="plate-no">{{
+        "LandingPage.HeroSection.Form.Fields.inputPlate" | translate
+      }}</label>
+      <input
+        id="plate-no"
+        type="text"
+        formControlName="plateNo"
+        [placeholder]="
+          'LandingPage.HeroSection.Form.Fields.entryPlate' | translate
+        "
+        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm"
+      />
+      <p
+        class="mt-1 text-xs text-red-600"
+        *ngIf="renewalForm.controls.plateNo.touched && renewalForm.controls.plateNo.errors?.['required']"
+      >
+        {{ "LandingPage.HeroSection.Form.Fields.entryPlate" | translate }}
       </p>
     </div>
     <!-- cpr -->
     <div class="flex flex-col">
-      <label class="text-primary" for="cpr">{{'LandingPage.HeroSection.Form.Fields.inputCPR' | translate}}</label>
-      <input id="cpr" type="text" formControlName="cpr"
-        [placeholder]="'LandingPage.HeroSection.Form.Fields.entryCPR' | translate"
-        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm" />
-      <p class="text-red-600 text-xs mt-1"
-        *ngIf="renewalForm.controls.cpr.touched && renewalForm.controls.plateNo.errors?.['required']">
-        {{'LandingPage.HeroSection.Form.Fields.entryCPR' | translate}}
+      <label class="text-primary" for="cpr">{{
+        "LandingPage.HeroSection.Form.Fields.inputCPR" | translate
+      }}</label>
+      <input
+        id="cpr"
+        type="text"
+        formControlName="cpr"
+        [placeholder]="
+          'LandingPage.HeroSection.Form.Fields.entryCPR' | translate
+        "
+        class="px-4 py-2 rounded-md bg-white/10 backdrop-blur-sm"
+      />
+      <p
+        class="mt-1 text-xs text-red-600"
+        *ngIf="renewalForm.controls.cpr.touched && renewalForm.controls.plateNo.errors?.['required']"
+      >
+        {{ "LandingPage.HeroSection.Form.Fields.entryCPR" | translate }}
       </p>
     </div>
   </div>
 
-  <button class="btn-gradient w-full" type="submit">{{'LandingPage.HeroSection.Buttons.renewPolicy' |
-    translate}}</button>
+  <button class="w-full btn-gradient" type="submit">
+    {{ "LandingPage.HeroSection.Buttons.renewPolicy" | translate }}
+  </button>
 </form>
