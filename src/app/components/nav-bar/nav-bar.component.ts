@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguagesService } from 'src/app/services/languages.service';
 
@@ -15,8 +23,13 @@ type NavLink = {
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss'],
 })
-export class NavBarComponent {
+export class NavBarComponent implements AfterViewInit {
   constructor(public languages: LanguagesService, public route: Router) {}
+
+  @ViewChildren('subLink') subLinksRef:
+    | QueryList<ElementRef<HTMLElement>>
+    | undefined;
+  @ViewChild('nav') navRef: ElementRef<HTMLElement> | undefined;
 
   public currentLang: string = this.languages.chosenLanguage;
   public navBarLogo: string = 'assets/images/logo-white.png';
@@ -25,9 +38,19 @@ export class NavBarComponent {
   public navSearch: string = 'assets/icons/search.svg';
   public navMenu: string = 'assets/icons/menu.svg';
   public navClose: string = 'assets/icons/close.svg';
+  public arrowDown: string = 'assets/icons/arrow-down.svg';
   public isMenuOverlayOpen: boolean = false;
 
   public isRootPage = this.route.url === '/';
+
+  public hoveredIndex: number | null = null;
+  // public navHeight: number = 200;
+  public navHeightDefault: number = 100;
+
+  ngAfterViewInit(): void {
+    const navHeight = this.navRef?.nativeElement.offsetHeight;
+    this.navHeightDefault = navHeight ?? 0;
+  }
 
   public pagesLinks: NavLink[] = [
     {
@@ -172,5 +195,33 @@ export class NavBarComponent {
       : (this.currentLang = 'en');
 
     this.languages.switchLanguage();
+  }
+
+  public onMouseHover(index: number) {
+    this.hoveredIndex = index;
+
+    let tempSubLink = this.subLinksRef?.toArray()[index];
+
+    if (this.pagesLinks[index].subLinks) {
+      const subHeight = tempSubLink?.nativeElement.offsetHeight;
+      this.navRef?.nativeElement.style.setProperty(
+        'height',
+        `${(this.navHeightDefault ?? 0) + (subHeight ?? 0)}px`
+      );
+    } else {
+      this.resetNavHeight();
+    }
+  }
+
+  private resetNavHeight() {
+    this.navRef?.nativeElement.style.setProperty(
+      'height',
+      `${this.navHeightDefault}px`
+    );
+  }
+
+  public onMouseExitHover() {
+    this.hoveredIndex = null;
+    this.resetNavHeight();
   }
 }
