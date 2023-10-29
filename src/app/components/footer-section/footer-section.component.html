@@ -134,6 +134,7 @@
   ></div>
   <!-- bg Video -->
   <video
+    #footerVideo
     class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-20"
     autoplay
     muted
@@ -141,8 +142,10 @@
     playsinline
     (controls)="(false)"
     (play)="(true)"
+    (canplay)="footerVideo.play()"
+    (loadedmetadata)="footerVideo.muted = true"
   >
-    <source [src]="bgVideo" type="video/mp4" />
+    <source [src]="footerVideoURL" type="video/mp4" />
   </video>
   <!-- video overlay -->
   <div

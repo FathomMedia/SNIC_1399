@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer-section.component.scss'],
 })
 export class FooterSectionComponent {
-  public bgVideo: string =
+  public footerVideoURL: string =
     'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698323036/SNIC_1399/16_by_10_np7qmi.mp4';
   public navBarLogo: string = 'assets/images/logo-white.png';
   public bestLogo: string = 'assets/images/best.png';

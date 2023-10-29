@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LanguagesService } from 'src/app/services/languages.service';
 
 @Component({
@@ -8,6 +8,6 @@ import { LanguagesService } from 'src/app/services/languages.service';
 })
 export class HeroSectionComponent {
   constructor(private language: LanguagesService) {}
-  public heroVideo: string =
+  public heroVideoURL: string =
     'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698312536/SNIC_1399/hero-video_uubqzn.mp4';
 }
