@@ -1,55 +1,21 @@
 <div class="relative rounded-t-[3rem] overflow-clip px-10 py-10 lg:py-20 lg:px-24">
   <!-- content -->
-  <div class="container z-10 flex flex-col gap-10 mx-auto text-white">
+  <div class="container z-10 flex flex-col gap-10  mx-auto text-white">
     <!-- links -->
     <div class="grid grid-cols-1 font-light gap-9 md:gap-y-20 md:grid-cols-3 xl:grid-cols-6 auto-cols-max">
-      <div class="flex flex-col gap-6 w-fit max-sm:text-center">
-        <a class="hidden font-semibold md:block" href="#">Individual</a>
-        <a class="hidden md:block" href="#">Motor</a>
-        <a class="hidden md:block" href="#">Medical</a>
-        <a class="hidden md:block" href="#">Travel</a>
-        <a class="hidden md:block" href="#">Saving & Protection</a>
-        <a class="hidden md:block" href="#">Home</a>
-        <a class="hidden md:block" href="#">Marine</a>
-      </div>
-      <div class="flex flex-col gap-6 w-fit max-sm:text-center">
-        <a class="hidden font-semibold md:block" href="#">Corporate</a>
-        <a class="hidden md:block" href="#">Motor</a>
-        <a class="hidden md:block" href="#">Group Medical</a>
-        <a class="hidden md:block" href="#">Group Life</a>
-        <a class="hidden md:block" href="#">Travel</a>
-        <a class="hidden md:block" href="#">Marine</a>
-        <a class="hidden md:block" href="#">Property</a>
-      </div>
-      <div class="flex flex-col gap-6 w-fit max-sm:text-center">
-        <a class="font-semibold" href="#">About Us</a>
-        <a class="hidden md:block" href="#">Profile</a>
-        <a class="hidden md:block" href="#">Board of Directors</a>
-        <a class="hidden md:block" href="#">Executive Management</a>
-        <a class="hidden md:block" href="#">Financial Reports</a>
-        <a class="hidden md:block" href="#">Careers</a>
-        <a class="hidden md:block" href="#">News</a>
-      </div>
-      <div class="flex flex-col gap-6 w-fit max-sm:text-center">
-        <a class="font-semibold" href="#">Quick Renewal</a>
-        <a class="hidden md:block" href="#">Motor Insurance Renewal</a>
-        <a class="hidden md:block" href="#">Home Renewal</a>
-      </div>
-      <div class="flex flex-col gap-6 w-fit max-sm:text-center">
-        <a class="font-semibold" href="#">Claims</a>
-        <a class="hidden md:block" href="#">Motor Claim</a>
-        <a class="hidden md:block" href="#">Medical Claim</a>
-      </div>
-      <div class="flex flex-col gap-6 max-sm:text-center">
-        <a class="font-semibold w-fit" href="#">Contact Us</a>
-        <a class="w-fit" href="#">Complaints</a>
-        <a class="w-fit" href="#">Location</a>
-        <a class="flex items-center gap-3 w-fit" href="tel:+97317563377"><svg-icon class="w-4 h-4" [src]="phone" />+973
-          17563377</a>
-        <a class="flex items-center gap-3 w-fit" href="mailto:snicbh@snic.com.bh"><svg-icon class="w-4 h-4"
-            [src]="mail" />snicbh@snic.com.bh</a>
+      <!-- primary links -->
+      <div *ngFor="let link of fLinks" [ngClass]="['w-fit md:block', link.hideMobile ? 'hidden': '']">
+        <div class="flex flex-col gap-6 w-fit ">
+          <a class="font-semibold hover:underline" [href]="link.href">{{link.name}}</a>
+          <!-- sub links -->
+          <div *ngFor="let subLink of link.subLinks" [ngClass]="['md:block w-fit', subLink.hideMobile ? 'hidden': '']">
+            <a class="flex items-center hover:underline gap-4" [href]="subLink.href"><svg-icon *ngIf="subLink.logo"
+                class="w-4 h-4" [src]="subLink.logo" />{{subLink.name}}</a>
+          </div>
+        </div>
       </div>
     </div>
+
     <!-- logos -->
     <div class="flex justify-between">
       <div class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
