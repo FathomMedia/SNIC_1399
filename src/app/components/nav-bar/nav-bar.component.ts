@@ -30,6 +30,8 @@ export class NavBarComponent implements AfterViewInit {
     | QueryList<ElementRef<HTMLElement>>
     | undefined;
   @ViewChild('nav') navRef: ElementRef<HTMLElement> | undefined;
+  @ViewChild('lightLogo') lightLogoRef: ElementRef<HTMLElement> | undefined;
+  @ViewChild('darkLogo') darkLogoRef: ElementRef<HTMLElement> | undefined;
 
   public currentLang: string = this.languages.chosenLanguage;
   public navBarLogo: string = 'assets/images/logo-white.png';
@@ -49,7 +51,34 @@ export class NavBarComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const navHeight = this.navRef?.nativeElement.offsetHeight;
+
     this.navHeightDefault = navHeight ?? 0;
+
+    window.addEventListener('scroll', () => {
+      const navElement = this.navRef?.nativeElement;
+      const lightLogo = this.lightLogoRef?.nativeElement;
+      const darkLogo = this.darkLogoRef?.nativeElement;
+
+      if (navElement && window.scrollY > 200) {
+        navElement.classList.add('!bg-white');
+        navElement.classList.add('!shadow-lg');
+        const firstElement = navElement?.querySelector(':first-child');
+        if (firstElement) {
+          firstElement.classList.add('!text-primary');
+        }
+        lightLogo?.classList.add('hidden');
+        darkLogo?.classList.remove('hidden');
+      } else {
+        navElement?.classList.remove('!bg-white');
+        navElement?.classList.remove('!shadow-lg');
+        const firstElement = navElement?.querySelector(':first-child');
+        if (firstElement) {
+          firstElement.classList.remove('!text-primary');
+        }
+        lightLogo?.classList.remove('hidden');
+        darkLogo?.classList.add('hidden');
+      }
+    });
   }
 
   public pagesLinks: NavLink[] = [

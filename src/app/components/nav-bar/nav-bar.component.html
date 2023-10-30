@@ -12,7 +12,7 @@
   #nav
   id="navbarId"
   [ngClass]="[
-    'absolute top-0 left-0 right-0 z-40 duration-300 hover:bg-white rounded-b-[3rem] group/nav',
+    'fixed top-0 left-0 right-0 z-40 duration-300 hover:bg-white hover:shadow-lg rounded-b-[3rem] group/nav',
     !isRootPage ? 'bg-primary  ' : ''
   ]"
   (mouseleave)="onMouseExitHover()"
@@ -26,11 +26,13 @@
       <a routerLink="/" class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
         <!-- logo -->
         <img
+          #lightLogo
           class="object-contain w-full h-full group-hover/nav:hidden"
           [src]="navBarLogo"
           alt="Snic Logo"
         />
         <img
+          #darkLogo
           class="hidden object-contain w-full h-full group-hover/nav:block"
           [src]="navBarLogoDark"
           alt="Snic Logo"
@@ -73,7 +75,7 @@
           <div
             #subLink
             [ngClass]="[
-              'pb-3 duration-300 absolute text-primary isolate rounded-b-[3rem] left-0 pt-10 right-0 opacity-0',
+              'pb-3 duration-300 absolute text-primary isolate rounded-b-[3rem] left-0 right-0 opacity-0',
               hoveredIndex === i ? ' opacity-100' : 'pointer-events-none',
               hoveredIndex && hoveredIndex > i
                 ? 'translate-x-3'
