@@ -3,8 +3,10 @@
     'fixed top-0 left-0 duration-300 z-10 isolate w-screen h-screen pointer-events-none bg-black/30',
     hoveredIndex && pagesLinks[hoveredIndex].subLinks
       ? 'opacity-100'
-      : 'opacity-0'
+      : 'opacity-0',
+    isMenuOverlayOpen ? 'max-1p5xl:opacity-100 pointer-events-auto' : ''
   ]"
+  (click)="isMenuOverlayOpen && toggleMenu()"
 ></div>
 
 <!-- menu -->
@@ -12,13 +14,16 @@
   #nav
   id="navbarId"
   [ngClass]="[
-    'fixed top-0 left-0 right-0 z-40 duration-300  rounded-b-[3rem] group/nav',
-    !isRootPage ? 'bg-primary  ' : ''
+    'fixed top-0 left-0 right-0 z-40 duration-300 rounded-b-[3rem] group/nav',
+    !isRootPage ? 'bg-[#F5F5F5] text-primary  shadow-lg' : ''
   ]"
   (mouseleave)="onMouseExitHover()"
 >
   <div
-    class="container flex flex-col mx-auto text-white transition-all duration-300"
+    [ngClass]="[
+      'container flex flex-col mx-auto text-white transition-all duration-300',
+      !isRootPage ? '!text-primary ' : ''
+    ]"
   >
     <div
       class="flex items-center justify-between w-full px-10 mx-auto max-1p5xl:py-6 gap-14"
@@ -27,13 +32,19 @@
         <!-- logo -->
         <img
           #lightLogo
-          class="object-contain w-full h-full"
+          [ngClass]="[
+            'object-contain w-full h-full',
+            !isRootPage ? '!hidden' : ''
+          ]"
           [src]="navBarLogo"
           alt="Snic Logo"
         />
         <img
           #darkLogo
-          class="hidden object-contain w-full h-full"
+          [ngClass]="[
+            'hidden object-contain w-full h-full',
+            !isRootPage ? '!block' : ''
+          ]"
           [src]="navBarLogoDark"
           alt="Snic Logo"
         />
@@ -103,10 +114,7 @@
                 *ngFor="let subLink of link.subLinks; index as si"
                 class="flex flex-col max-w-3xl gap-3 group/sublink"
               >
-                <div
-                  (mouseenter)="onSubLinkHover(si)"
-                  class="flex items-center justify-start gap-4"
-                >
+                <div class="flex items-center justify-start gap-4">
                   <a
                     *ngIf="subLink.href"
                     class="w-fit flex gap-2 items-center group-hover/sublink:text-secondary"
@@ -219,10 +227,10 @@
   <!-- menu overlay -->
   <div
     [ngClass]="[
-      'duration-300 flex flex-col fixed top-0 left-0 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
+      'duration-300 flex flex-col fixed top-0 left-0 md:left-auto md:shadow-lg md:rounded-l-[3rem] md:w-1/2 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
       isMenuOverlayOpen
-        ? 'translate-y-0 1p5xl:-translate-y-full opacity-100'
-        : '-translate-y-full'
+        ? 'translate-y-0 1p5xl:translate-x-full opacity-100'
+        : 'max-md:-translate-y-full md:translate-x-full'
     ]"
   >
     <div class="container flex flex-col gap-10 mx-auto overflow-hidden grow">

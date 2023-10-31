@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  OnInit,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -24,7 +23,11 @@ type NavLink = {
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements AfterViewInit {
-  constructor(public languages: LanguagesService, public route: Router) {}
+  constructor(
+    public languages: LanguagesService,
+    public route: Router,
+    public activeRoute: ActivatedRoute
+  ) {}
 
   @ViewChildren('subLink') subLinksRef:
     | QueryList<ElementRef<HTMLElement>>
@@ -38,9 +41,7 @@ export class NavBarComponent implements AfterViewInit {
   @ViewChildren('indicator') subLinksIndicatorRef:
     | QueryList<ElementRef<HTMLElement>>
     | undefined;
-  @ViewChildren('subSubLinks') subSubLinksRef:
-    | QueryList<ElementRef<HTMLElement>>
-    | undefined;
+
   @ViewChild('nav') navRef: ElementRef<HTMLElement> | undefined;
   @ViewChild('lightLogo') lightLogoRef: ElementRef<HTMLElement> | undefined;
   @ViewChild('darkLogo') darkLogoRef: ElementRef<HTMLElement> | undefined;
@@ -55,43 +56,40 @@ export class NavBarComponent implements AfterViewInit {
   public arrowDown: string = 'assets/icons/arrow-down.svg';
   public isMenuOverlayOpen: boolean = false;
 
+  // public isRootPage = this.activeRoute.pathFromRoot === '/';
   public isRootPage = this.route.url === '/';
 
   public hoveredIndex: number | null = null;
   public hoveredSubLinkIndex: number | null = null;
-  // public navHeight: number = 200;
-  // public navHeightDefault: number = 100;
 
   ngAfterViewInit(): void {
-    // const navHeight = this.navRef?.nativeElement.offsetHeight;
+    if (this.isRootPage) {
+      window.addEventListener('scroll', () => {
+        const navElement = this.navRef?.nativeElement;
+        const lightLogo = this.lightLogoRef?.nativeElement;
+        const darkLogo = this.darkLogoRef?.nativeElement;
 
-    // this.navHeightDefault = navHeight ?? 0;
-
-    window.addEventListener('scroll', () => {
-      const navElement = this.navRef?.nativeElement;
-      const lightLogo = this.lightLogoRef?.nativeElement;
-      const darkLogo = this.darkLogoRef?.nativeElement;
-
-      if (navElement && window.scrollY > 200) {
-        navElement.classList.add('!bg-[#F5F5F5]');
-        navElement.classList.add('!shadow-lg');
-        const firstElement = navElement?.querySelector(':first-child');
-        if (firstElement) {
-          firstElement.classList.add('!text-primary');
+        if (navElement && window.scrollY > 200) {
+          navElement.classList.add('!bg-[#F5F5F5]');
+          navElement.classList.add('!shadow-lg');
+          const firstElement = navElement?.querySelector(':first-child');
+          if (firstElement) {
+            firstElement.classList.add('!text-primary');
+          }
+          lightLogo?.classList.add('hidden');
+          darkLogo?.classList.remove('hidden');
+        } else {
+          navElement?.classList.remove('!bg-[#F5F5F5]');
+          navElement?.classList.remove('!shadow-lg');
+          const firstElement = navElement?.querySelector(':first-child');
+          if (firstElement) {
+            firstElement.classList.remove('!text-primary');
+          }
+          lightLogo?.classList.remove('hidden');
+          darkLogo?.classList.add('hidden');
         }
-        lightLogo?.classList.add('hidden');
-        darkLogo?.classList.remove('hidden');
-      } else {
-        navElement?.classList.remove('!bg-[#F5F5F5]');
-        navElement?.classList.remove('!shadow-lg');
-        const firstElement = navElement?.querySelector(':first-child');
-        if (firstElement) {
-          firstElement.classList.remove('!text-primary');
-        }
-        lightLogo?.classList.remove('hidden');
-        darkLogo?.classList.add('hidden');
-      }
-    });
+      });
+    }
   }
 
   public pagesLinks: NavLink[] = [
@@ -239,24 +237,6 @@ export class NavBarComponent implements AfterViewInit {
     this.languages.switchLanguage();
   }
 
-  public onSubLinkHover(index: number) {
-    // this.hoveredSubLinkIndex = index;
-    // if (this.hoveredIndex) {
-    //   let tempSubLinkBG = this.subLinkWithBGRef?.toArray()[this.hoveredIndex];
-    //   let tempSubSubLink = this.subSubLinksRef?.toArray()[index];
-    //   const subBGHeight = tempSubLinkBG?.nativeElement.offsetHeight;
-    //   // reset
-    //   tempSubLinkBG?.nativeElement.style.setProperty('height', `fit-content`);
-    //   // get subSub height
-    //   const subSubHeight = tempSubSubLink?.nativeElement.offsetHeight;
-    //   // set bg with the height
-    //   tempSubLinkBG?.nativeElement.style.setProperty(
-    //     'height',
-    //     `${(subBGHeight ?? 0) + (subSubHeight ?? 0)}px`
-    //   );
-    // }
-  }
-
   public onMouseHover(index: number) {
     this.hoveredIndex = index;
 
@@ -270,28 +250,9 @@ export class NavBarComponent implements AfterViewInit {
         tempLink.nativeElement.offsetLeft + 50 + 'px'
       );
     }
-
-    // if (this.pagesLinks[index].subLinks) {
-    //   const subHeight = tempSubLink?.nativeElement.offsetHeight;
-    //   this.navRef?.nativeElement.style.setProperty(
-    //     'height',
-    //     `${(this.navHeightDefault ?? 0) + (subHeight ?? 0)}px`
-    //   );
-    // } else {
-    //   this.resetNavHeight();
-    // }
   }
-
-  // private resetNavHeight() {
-  //   this.navRef?.nativeElement.style.setProperty(
-  //     'height',
-  //     `${this.navHeightDefault}px`
-  //   );
-  // }
 
   public onMouseExitHover() {
     this.hoveredIndex = null;
-
-    // this.resetNavHeight();
   }
 }
