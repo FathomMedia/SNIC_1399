@@ -2,6 +2,8 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
+  OnInit,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -71,7 +73,7 @@ export class NavBarComponent implements AfterViewInit {
         const lightLogo = this.lightLogoRef?.nativeElement;
         const darkLogo = this.darkLogoRef?.nativeElement;
 
-        if (navElement && window.scrollY > 200) {
+        if (navElement && window.scrollY > 100) {
           navElement.classList.add('!bg-[#F5F5F5]');
           navElement.classList.add('!shadow-lg');
           const firstElement = navElement?.querySelector(':first-child');

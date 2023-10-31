@@ -15,14 +15,14 @@
   id="navbarId"
   [ngClass]="[
     'fixed top-0 left-0 right-0 z-40 duration-300 rounded-b-[3rem] group/nav',
-    !isRootPage ? 'bg-[#F5F5F5] text-primary  shadow-lg' : ''
+    !isRootPage ? 'bg-[#F5F5F5] !text-primary  shadow-lg' : ''
   ]"
   (mouseleave)="onMouseExitHover()"
 >
   <div
     [ngClass]="[
       'container flex flex-col mx-auto text-white transition-all duration-300',
-      !isRootPage ? '!text-primary ' : ''
+      !isRootPage ? '!text-primary' : ''
     ]"
   >
     <div
@@ -63,8 +63,6 @@
             *ngIf="link.href"
             class="z-20 flex items-center text-sm font-light duration-100 hover:underline"
             [href]="link.href"
-            [routerLink]="link.href"
-            routerLinkActive="!font-bold"
             (mouseenter)="onMouseHover(i)"
           >
             {{ link.name
@@ -90,7 +88,7 @@
           <div
             #indicator
             [ngClass]="[
-              'border-slate-50/40 border bg-white/80 backdrop-blur-md w-6 h-6 absolute transform rotate-45',
+              'border-slate-50/40 border bg-white/80 rounded-sm backdrop-blur-md w-6 h-6 absolute transform rotate-45',
               hoveredIndex &&
               hoveredIndex === i &&
               pagesLinks[hoveredIndex].subLinks
