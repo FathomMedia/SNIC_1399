@@ -29,6 +29,15 @@ export class NavBarComponent implements AfterViewInit {
   @ViewChildren('subLink') subLinksRef:
     | QueryList<ElementRef<HTMLElement>>
     | undefined;
+  @ViewChildren('subLinkWithBG') subLinkWithBGRef:
+    | QueryList<ElementRef<HTMLElement>>
+    | undefined;
+  @ViewChildren('link') linksRef:
+    | QueryList<ElementRef<HTMLElement>>
+    | undefined;
+  @ViewChildren('indicator') subLinksIndicatorRef:
+    | QueryList<ElementRef<HTMLElement>>
+    | undefined;
   @ViewChild('nav') navRef: ElementRef<HTMLElement> | undefined;
   @ViewChild('lightLogo') lightLogoRef: ElementRef<HTMLElement> | undefined;
   @ViewChild('darkLogo') darkLogoRef: ElementRef<HTMLElement> | undefined;
@@ -47,12 +56,12 @@ export class NavBarComponent implements AfterViewInit {
 
   public hoveredIndex: number | null = null;
   // public navHeight: number = 200;
-  public navHeightDefault: number = 100;
+  // public navHeightDefault: number = 100;
 
   ngAfterViewInit(): void {
-    const navHeight = this.navRef?.nativeElement.offsetHeight;
+    // const navHeight = this.navRef?.nativeElement.offsetHeight;
 
-    this.navHeightDefault = navHeight ?? 0;
+    // this.navHeightDefault = navHeight ?? 0;
 
     window.addEventListener('scroll', () => {
       const navElement = this.navRef?.nativeElement;
@@ -60,7 +69,7 @@ export class NavBarComponent implements AfterViewInit {
       const darkLogo = this.darkLogoRef?.nativeElement;
 
       if (navElement && window.scrollY > 200) {
-        navElement.classList.add('!bg-white');
+        navElement.classList.add('!bg-[#F5F5F5]');
         navElement.classList.add('!shadow-lg');
         const firstElement = navElement?.querySelector(':first-child');
         if (firstElement) {
@@ -69,7 +78,7 @@ export class NavBarComponent implements AfterViewInit {
         lightLogo?.classList.add('hidden');
         darkLogo?.classList.remove('hidden');
       } else {
-        navElement?.classList.remove('!bg-white');
+        navElement?.classList.remove('!bg-[#F5F5F5]');
         navElement?.classList.remove('!shadow-lg');
         const firstElement = navElement?.querySelector(':first-child');
         if (firstElement) {
@@ -229,28 +238,38 @@ export class NavBarComponent implements AfterViewInit {
   public onMouseHover(index: number) {
     this.hoveredIndex = index;
 
-    let tempSubLink = this.subLinksRef?.toArray()[index];
+    let tempLink = this.linksRef?.toArray()[index];
+    let tempIndicator = this.subLinksIndicatorRef?.toArray()[index];
+    let tempSubLinkBG = this.subLinkWithBGRef?.toArray()[index];
 
-    if (this.pagesLinks[index].subLinks) {
-      const subHeight = tempSubLink?.nativeElement.offsetHeight;
-      this.navRef?.nativeElement.style.setProperty(
-        'height',
-        `${(this.navHeightDefault ?? 0) + (subHeight ?? 0)}px`
+    // move the triangle indentor under the hovered link
+    if (tempLink && tempIndicator) {
+      tempIndicator.nativeElement.style.setProperty(
+        'left',
+        tempLink.nativeElement.offsetLeft + 50 + 'px'
       );
-    } else {
-      this.resetNavHeight();
     }
+
+    // if (this.pagesLinks[index].subLinks) {
+    //   const subHeight = tempSubLink?.nativeElement.offsetHeight;
+    //   this.navRef?.nativeElement.style.setProperty(
+    //     'height',
+    //     `${(this.navHeightDefault ?? 0) + (subHeight ?? 0)}px`
+    //   );
+    // } else {
+    //   this.resetNavHeight();
+    // }
   }
 
-  private resetNavHeight() {
-    this.navRef?.nativeElement.style.setProperty(
-      'height',
-      `${this.navHeightDefault}px`
-    );
-  }
+  // private resetNavHeight() {
+  //   this.navRef?.nativeElement.style.setProperty(
+  //     'height',
+  //     `${this.navHeightDefault}px`
+  //   );
+  // }
 
   public onMouseExitHover() {
     this.hoveredIndex = null;
-    this.resetNavHeight();
+    // this.resetNavHeight();
   }
 }

@@ -1,6 +1,6 @@
 <div
   [ngClass]="[
-    'fixed top-0 left-0 duration-300 z-10 isolate w-screen h-screen pointer-events-none bg-black/50',
+    'fixed top-0 left-0 duration-300 z-10 isolate w-screen h-screen pointer-events-none bg-black/30',
     hoveredIndex && pagesLinks[hoveredIndex].subLinks
       ? 'opacity-100'
       : 'opacity-0'
@@ -12,13 +12,13 @@
   #nav
   id="navbarId"
   [ngClass]="[
-    'fixed top-0 left-0 right-0 z-40 duration-300 hover:bg-white hover:shadow-lg rounded-b-[3rem] group/nav',
+    'fixed top-0 left-0 right-0 z-40 duration-300  rounded-b-[3rem] group/nav',
     !isRootPage ? 'bg-primary  ' : ''
   ]"
   (mouseleave)="onMouseExitHover()"
 >
   <div
-    class="container flex flex-col mx-auto text-white transition-all duration-300 group-hover/nav:text-primary"
+    class="container flex flex-col mx-auto text-white transition-all duration-300"
   >
     <div
       class="flex items-center justify-between w-full px-10 mx-auto max-1p5xl:py-6 gap-14"
@@ -27,13 +27,13 @@
         <!-- logo -->
         <img
           #lightLogo
-          class="object-contain w-full h-full group-hover/nav:hidden"
+          class="object-contain w-full h-full"
           [src]="navBarLogo"
           alt="Snic Logo"
         />
         <img
           #darkLogo
-          class="hidden object-contain w-full h-full group-hover/nav:block"
+          class="hidden object-contain w-full h-full"
           [src]="navBarLogoDark"
           alt="Snic Logo"
         />
@@ -41,10 +41,11 @@
       <!-- links -->
       <div class="flex-wrap items-center hidden py-10 1p5xl:flex grow">
         <div
+          #link
           *ngFor="let link of pagesLinks; index as i"
           class="px-4 py-3 group/link hover:text-secondary"
         >
-          <app-arrow-link
+          <a
             *ngIf="link.href"
             class="z-20 flex items-center text-sm font-light duration-100 hover:underline"
             [href]="link.href"
@@ -58,7 +59,7 @@
               [src]="arrowDown"
               class="flex flex-col items-center justify-center w-4 h-4"
             />
-          </app-arrow-link>
+          </a>
           <div
             *ngIf="link.href == undefined"
             class="z-20 flex items-center gap-2 text-sm font-light duration-100 pe-3 hover:underline"
@@ -75,22 +76,37 @@
           <div
             #subLink
             [ngClass]="[
-              'pb-3 duration-300 absolute text-primary isolate rounded-b-[3rem] left-0 right-0 opacity-0',
-              hoveredIndex === i ? ' opacity-100' : 'pointer-events-none',
+              'pb-3 duration-0 absolute text-primary isolate  rounded-b-[3rem] left-0 right-0 opacity-0',
+              hoveredIndex === i && pagesLinks[hoveredIndex].subLinks
+                ? ' opacity-100'
+                : 'pointer-events-none',
               hoveredIndex && hoveredIndex > i
                 ? 'translate-x-3'
                 : '-translate-x-3'
             ]"
           >
-            <div class="grid max-w-4xl grid-cols-3 gap-6 mx-auto">
+            <div
+              #indicator
+              [ngClass]="[
+                'border-slate-50/40 border bg-white/80 backdrop-blur-md w-6 h-6 absolute transform rotate-45',
+                hoveredIndex && hoveredIndex === i ? 'translate-y-2' : ''
+              ]"
+            ></div>
+            <div
+              #subLinkWithBG
+              [ngClass]="[
+                'grid max-w-4xl grid-cols-3 gap-6 mx-auto border duration-300  border-slate-50/40 bg-white/80 backdrop-blur-md shadow-lg p-10 rounded-3xl',
+                hoveredIndex && hoveredIndex === i ? 'translate-y-3' : ''
+              ]"
+            >
               <div
                 *ngFor="let subLink of link.subLinks"
-                class="flex flex-col max-w-3xl gap-3 hover:text-secondary"
+                class="flex flex-col max-w-3xl gap-3 group/sublink"
               >
                 <div class="flex items-center justify-start gap-4">
-                  <app-arrow-link
+                  <a
                     *ngIf="subLink.href"
-                    class="w-fit"
+                    class="w-fit flex gap-2 items-center group-hover/sublink:text-secondary"
                     [href]="subLink.href"
                   >
                     <div
@@ -99,7 +115,7 @@
                       <svg-icon class="w-4" [src]="subLink.logo ?? navMenu" />
                     </div>
                     {{ subLink.name }}
-                  </app-arrow-link>
+                  </a>
                   <div
                     *ngIf="subLink.href == undefined"
                     class="z-20 flex items-center gap-3 text-sm font-light duration-100"
@@ -114,13 +130,16 @@
                   </div>
                 </div>
                 <!-- sub sub links -->
-                <div *ngIf="subLink.subLinks" class="flex flex-col gap-2">
+                <div
+                  *ngIf="subLink.subLinks"
+                  class="flex-col gap-2 hidden group-hover/sublink:flex duration-300"
+                >
                   <div *ngFor="let subSub of subLink.subLinks">
-                    <app-arrow-link
+                    <a
                       *ngIf="subSub.href"
-                      class="text-sm font-light text-slate-500 hover:text-secondary/70"
+                      class="text-sm font-light text-primary hover:text-secondary"
                       [href]="subSub.href"
-                      >{{ subSub.name }}</app-arrow-link
+                      >{{ subSub.name }}</a
                     >
                     <p
                       *ngIf="subSub.href == undefined"
@@ -283,25 +302,25 @@
             >
               {{ link.name }}
             </p>
-            <app-arrow-link
+            <a
               [ngClass]="[
                 'px-6 py-3 hover:underline',
                 link.subLinks ? 'ui-collapse-title' : ''
               ]"
               *ngIf="link.href"
               [href]="link.href"
-              >{{ link.name }}</app-arrow-link
+              >{{ link.name }}</a
             >
             <div class="flex flex-col gap-6 ui-collapse-content">
               <div
                 class="flex flex-col gap-3"
                 *ngFor="let subLink of link.subLinks"
               >
-                <app-arrow-link
+                <a
                   *ngIf="subLink.href"
                   [href]="subLink.href"
                   class="hover:underline"
-                  >{{ subLink.name }}</app-arrow-link
+                  >{{ subLink.name }}</a
                 >
                 <p
                   *ngIf="subLink.href == undefined"
@@ -311,11 +330,11 @@
                 </p>
                 <!-- sub sub -->
                 <div class="flex" *ngFor="let subsub of subLink.subLinks">
-                  <app-arrow-link
+                  <a
                     class="px-4 text-white/60 hover:underline"
                     *ngIf="subsub.href"
                     [href]="subsub.href"
-                    >{{ subsub.name }}</app-arrow-link
+                    >{{ subsub.name }}</a
                   >
                   <p *ngIf="subsub.href == undefined">
                     {{ subsub.name }}
