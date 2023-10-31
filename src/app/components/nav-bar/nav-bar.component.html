@@ -50,7 +50,10 @@
         />
       </a>
       <!-- links -->
-      <div class="flex-wrap items-center hidden py-10 1p5xl:flex grow">
+      <div
+        #links
+        class="flex-wrap items-center hidden py-10 1p5xl:flex w-fit mr-auto"
+      >
         <div
           #link
           *ngFor="let link of pagesLinks; index as i"
@@ -85,9 +88,20 @@
           </div>
           <!-- subLinks -->
           <div
+            #indicator
+            [ngClass]="[
+              'border-slate-50/40 border bg-white/80 backdrop-blur-md w-6 h-6 absolute transform rotate-45',
+              hoveredIndex &&
+              hoveredIndex === i &&
+              pagesLinks[hoveredIndex].subLinks
+                ? 'translate-y-2'
+                : ' opacity-0 '
+            ]"
+          ></div>
+          <div
             #subLink
             [ngClass]="[
-              'pb-3 duration-0 absolute text-primary isolate  rounded-b-[3rem] left-0 right-0 opacity-0',
+              'pb-3 duration-0 absolute text-primary isolate  rounded-b-[3rem] opacity-0',
               hoveredIndex === i && pagesLinks[hoveredIndex].subLinks
                 ? ' opacity-100'
                 : 'pointer-events-none',
@@ -97,16 +111,9 @@
             ]"
           >
             <div
-              #indicator
-              [ngClass]="[
-                'border-slate-50/40 border bg-white/80 backdrop-blur-md w-6 h-6 absolute transform rotate-45',
-                hoveredIndex && hoveredIndex === i ? 'translate-y-2' : ''
-              ]"
-            ></div>
-            <div
               #subLinkWithBG
               [ngClass]="[
-                'grid max-w-4xl grid-cols-3 gap-6 mx-auto border duration-300  border-slate-50/40 bg-white/80 backdrop-blur-md shadow-lg p-10 rounded-3xl',
+                'grid grid-cols-3 gap-6 mx-auto border duration-300 w-full  border-slate-50/40 bg-white/80 backdrop-blur-md shadow-lg p-10 rounded-3xl',
                 hoveredIndex && hoveredIndex === i ? 'translate-y-3' : ''
               ]"
             >
@@ -144,7 +151,7 @@
                 <div
                   #subSubLinks
                   *ngIf="subLink.subLinks"
-                  class="flex-col gap-2 flex duration-300"
+                  class="flex-col gap-2 pl-8 flex duration-300"
                 >
                   <div *ngFor="let subSub of subLink.subLinks">
                     <a

@@ -43,6 +43,7 @@ export class NavBarComponent implements AfterViewInit {
     | undefined;
 
   @ViewChild('nav') navRef: ElementRef<HTMLElement> | undefined;
+  @ViewChild('links') linkContainerRef: ElementRef<HTMLElement> | undefined;
   @ViewChild('lightLogo') lightLogoRef: ElementRef<HTMLElement> | undefined;
   @ViewChild('darkLogo') darkLogoRef: ElementRef<HTMLElement> | undefined;
 
@@ -242,12 +243,22 @@ export class NavBarComponent implements AfterViewInit {
 
     let tempLink = this.linksRef?.toArray()[index];
     let tempIndicator = this.subLinksIndicatorRef?.toArray()[index];
+    let tempSubLink = this.subLinksRef?.toArray()[index];
 
     // move the triangle indentor under the hovered link
-    if (tempLink && tempIndicator) {
+    if (tempLink && tempIndicator && tempSubLink && this.linkContainerRef) {
       tempIndicator.nativeElement.style.setProperty(
         'left',
-        tempLink.nativeElement.offsetLeft + 50 + 'px'
+        tempLink.nativeElement.offsetLeft + 30 + 'px'
+      );
+
+      tempSubLink.nativeElement.style.setProperty(
+        'left',
+        this.linkContainerRef.nativeElement.offsetLeft + 'px'
+      );
+      tempSubLink.nativeElement.style.setProperty(
+        'width',
+        this.linkContainerRef.nativeElement.offsetWidth + 'px'
       );
     }
   }
