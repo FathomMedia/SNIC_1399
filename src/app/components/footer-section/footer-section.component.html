@@ -1,16 +1,46 @@
-<div class="relative rounded-t-[3rem] overflow-clip px-10 py-10 lg:py-20 lg:px-24">
+<div
+  class="relative rounded-t-[3rem] overflow-clip px-10 py-10 lg:py-20 lg:px-24"
+>
   <!-- content -->
-  <div class="container z-10 flex flex-col gap-10  mx-auto text-white">
+  <div class="container z-10 flex flex-col gap-10 mx-auto text-white">
     <!-- links -->
-    <div class="grid grid-cols-1 font-light gap-9 md:gap-y-20 md:grid-cols-3 xl:grid-cols-6 auto-cols-max">
+    <div
+      class="grid grid-cols-1 font-light gap-9 md:gap-y-20 md:grid-cols-3 xl:grid-cols-6 auto-cols-max"
+    >
       <!-- primary links -->
-      <div *ngFor="let link of fLinks" [ngClass]="['w-fit md:block', link.hideMobile ? 'hidden': '']">
-        <div class="flex flex-col gap-6 w-fit ">
-          <a class="font-semibold hover:underline" [href]="link.href">{{link.name}}</a>
+      <div
+        *ngFor="let link of fLinks"
+        [ngClass]="['w-full md:block', link.hideMobile ? 'hidden' : '']"
+      >
+        <div class="flex flex-col gap-6 w-full">
+          <div
+            class="relative w-full hover:scale-105 duration-300 origin-bottom-left"
+          >
+            <a class="font-semibold duration-300" [href]="link.href">{{
+              link.name
+            }}</a>
+            <div class="h-[1px] w-1/2 bg-white md:block hidden"></div>
+          </div>
           <!-- sub links -->
-          <div *ngFor="let subLink of link.subLinks" [ngClass]="['md:block w-fit', subLink.hideMobile ? 'hidden': '']">
-            <a class="flex items-center hover:underline gap-4" [href]="subLink.href"><svg-icon *ngIf="subLink.logo"
-                class="w-4 h-4" [src]="subLink.logo" />{{subLink.name}}</a>
+          <div
+            *ngFor="let subLink of link.subLinks"
+            [ngClass]="[
+              'md:block w-fit group/subSubs duration-300',
+              subLink.hideMobile ? 'hidden' : ''
+            ]"
+          >
+            <a
+              class="flex items-center gap-4 text-white/80"
+              [href]="subLink.href"
+              ><svg-icon
+                *ngIf="subLink.logo"
+                class="w-4 h-4"
+                [src]="subLink.logo"
+              />{{ subLink.name }}</a
+            >
+            <div
+              class="w-0 group-hover/subSubs:w-full h-[1px] duration-300 bg-white"
+            ></div>
           </div>
         </div>
       </div>
@@ -19,15 +49,25 @@
     <!-- logos -->
     <div class="flex justify-between">
       <div class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
-        <img class="object-contain w-full h-full" [src]="navBarLogo" alt="Snic Logo" />
+        <img
+          class="object-contain w-full h-full"
+          [src]="navBarLogo"
+          alt="Snic Logo"
+        />
       </div>
       <div class="relative w-20 h-8 md:w-32 md:h-12 min-w-fit">
-        <img class="object-contain w-full h-full" [src]="bestLogo" alt="Best Logo" />
+        <img
+          class="object-contain w-full h-full"
+          [src]="bestLogo"
+          alt="Best Logo"
+        />
       </div>
     </div>
 
     <!-- social  -->
-    <div class="grid grid-cols-1 gap-6 text-sm font-light sm:grid-cols-2 lg:grid-cols-3 place-content-center">
+    <div
+      class="grid grid-cols-1 gap-6 text-sm font-light sm:grid-cols-2 lg:grid-cols-3 place-content-center"
+    >
       <p>
         © 2023 SNIC Insurance <br />
         Licensed By The Central Bank Of Bahrain As A Conventional Insurance
@@ -35,24 +75,50 @@
       </p>
 
       <div class="flex items-center justify-center gap-8">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
+        <div class="group/subSubs">
+          <a href="#" class="text-white/80">Privacy Policy</a>
+          <div
+            class="w-0 group-hover/subSubs:w-full h-[1px] duration-300 bg-white"
+          ></div>
+        </div>
+        <div class="group/subSubs">
+          <a href="#" class="text-white/80">Terms & Conditions</a>
+          <div
+            class="w-0 group-hover/subSubs:w-full h-[1px] duration-300 bg-white"
+          ></div>
+        </div>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:col-span-2 lg:col-span-1">
+      <div
+        class="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:col-span-2 lg:col-span-1"
+      >
         <div class="flex items-center gap-4">
           <a href="#" class="w-6 h-6 hover:scale-110">
-            <svg-icon class="w-full h-full " [src]="instagram" alt="SNIC Instagram" />
+            <svg-icon
+              class="w-full h-full"
+              [src]="instagram"
+              alt="SNIC Instagram"
+            />
           </a>
           <a href="#" class="w-6 h-6 hover:scale-110">
-            <svg-icon class="w-full h-full" [src]="linkedin" alt="SNIC Linkedin" />
+            <svg-icon
+              class="w-full h-full"
+              [src]="linkedin"
+              alt="SNIC Linkedin"
+            />
           </a>
         </div>
         <div class="flex items-center gap-4">
-          <a href="#download" class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125">
+          <a
+            href="#download"
+            class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
+          >
             <img class="h-10" [src]="appStore" alt="AppStore" />
           </a>
-          <a href="#download" class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125">
+          <a
+            href="#download"
+            class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
+          >
             <img class="h-10" [src]="playStore" alt="PlayStore" />
           </a>
         </div>
@@ -61,15 +127,26 @@
   </div>
 
   <!-- BG -->
-  <div class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-30"></div>
+  <div
+    class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-30"
+  ></div>
   <!-- bg Video -->
-  <video #footerVideo class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-20"
-    autoplay muted loop playsinline (controls)="(false)" (play)="(true)" (canplay)="footerVideo.play()"
-    (loadedmetadata)="footerVideo.muted = true">
+  <video
+    #footerVideo
+    class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full bg-primary -z-20"
+    autoplay
+    muted
+    loop
+    playsinline
+    (controls)="(false)"
+    (play)="(true)"
+    (canplay)="footerVideo.play()"
+    (loadedmetadata)="footerVideo.muted = true"
+  >
     <source [src]="footerVideoURL" type="video/mp4" />
   </video>
   <!-- video overlay -->
   <div
-    class="absolute -z-10 top-0 right-0 bottom-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(16,37,87,0.59)] to-[rgba(16,37,87,0.00)]">
-  </div>
+    class="absolute -z-10 top-0 right-0 bottom-0 left-0 w-full h-full bg-gradient-to-b from-[rgba(16,37,87,0.59)] to-[rgba(16,37,87,0.00)]"
+  ></div>
 </div>
