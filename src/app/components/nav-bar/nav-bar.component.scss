@@ -5,6 +5,20 @@
   min-height: fit-content;
 }
 
-.ui-collapse-plus > .ui-collapse-title:after {
-  top: 1rem !important;
+.ui-collapse-arrow > .ui-collapse-title {
+  @apply ltr:pl-4;
+}
+
+.ui-collapse-arrow > .ui-collapse-title:after {
+  @apply ltr:top-[1.8rem] ltr:right-[2rem] ltr:left-auto;
+}
+
+.ui-collapse-arrow > .ui-collapse-title:after {
+  @apply ltr:-rotate-45 ltr:checked:rotate-45;
+}
+
+.ui-collapse-arrow:not(.ui-collapse-close)
+  > input[type="checkbox"]:checked
+  ~ .ui-collapse-title:after {
+  @apply ltr:rotate-[135deg];
 }
