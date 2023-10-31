@@ -1,5 +1,9 @@
 <div id="services" class="container mx-auto">
-  <div class="justify-center text-center py-14 mt-14">
+  <div
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    class="justify-center text-center py-14 mt-14"
+  >
     <p
       class="font-bold text-4xl flex flex-col capitalize text-center leading-[2.5rem] tracking-wider text-primary"
     >
@@ -12,10 +16,13 @@
     </p>
   </div>
   <div
+    data-aos="fade-up"
+    data-aos-duration="1000"
+    data-aos-delay="300"
     class="grid grid-cols-1 gap-4 px-10 mb-24 md:px-24 justify-items-center sm:grid-cols-2 xl:grid-cols-4"
   >
     <app-service-card
-      *ngFor="let service of serviceData"
+      *ngFor="let service of serviceData; index as i"
       serviceIcon="{{ service.icon }}"
       serviceTitle="{{ service.title }}"
       serviceDescription="{{ service.description }}"
