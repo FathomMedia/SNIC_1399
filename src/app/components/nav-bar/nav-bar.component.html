@@ -232,7 +232,7 @@
   <!-- menu overlay -->
   <div
     [ngClass]="[
-      'duration-300 flex flex-col fixed top-0 rtl:left-0 ltr:right-0 rtl:md:right-auto ltr:md:left-auto md:shadow-lg ltr:md:rounded-l-[3rem] rtl:md:rounded-r-[3rem] md:w-1/2 bottom-0 opacity-0 right-0 bg-primary p-10 text-white z-50',
+      'duration-300 flex flex-col fixed top-0 rtl:left-0 ltr:right-0 rtl:md:right-auto ltr:md:left-auto md:shadow-lg ltr:md:rounded-l-[3rem] rtl:md:rounded-r-[3rem] md:w-1/2 w-full bottom-0 opacity-0 right-0 bg-[#F5F5F5] p-10 text-primary z-50',
       isMenuOverlayOpen
         ? 'translate-y-0 ltr:1p5xl:translate-x-full rtl:1p5xl:-translate-x-full opacity-100'
         : 'max-md:-translate-y-full ltr:md:translate-x-full rtl:md:-translate-x-full'
@@ -245,7 +245,7 @@
           <!-- logo -->
           <img
             class="object-contain w-full h-full"
-            [src]="navBarLogo"
+            [src]="navBarLogoDark"
             alt="Snic Logo"
           />
         </a>
@@ -253,9 +253,13 @@
         <button
           (click)="toggleMenu()"
           type="button"
-          class="relative w-8 h-8 p-1 rounded-full 1p5xl:hidden aspect-square hover:bg-white/30"
+          class="relative w-8 h-8 p-1 rounded-full border border-primary 1p5xl:hidden aspect-square hover:bg-primary/30"
         >
-          <img class="w-full h-full" [src]="navClose" alt="Close" />
+          <svg-icon
+            class="w-full h-full flex flex-col justify-center items-center"
+            [src]="navClose"
+            alt="Close"
+          />
         </button>
       </div>
       <!-- login & lang -->
@@ -266,7 +270,7 @@
             type="button"
             *ngIf="currentLang !== 'en'"
             (click)="this.changeLanguage()"
-            class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
+            class="flex items-center h-8 gap-2 p-2 text-primary border border-primary rounded-full hover:bg-primary/30 min-w-fit"
           >
             <!-- lang icon btn -->
             <svg-icon
@@ -280,7 +284,7 @@
             type="button"
             *ngIf="currentLang == 'en'"
             (click)="this.changeLanguage()"
-            class="flex items-center h-8 gap-2 p-2 text-white rounded-full hover:bg-white/30 min-w-fit"
+            class="flex items-center h-8 gap-2 p-2 text-primary border border-primary rounded-full hover:bg-primary/30 min-w-fit"
           >
             <!-- lang icon btn -->
             <svg-icon
@@ -292,15 +296,20 @@
           </button>
         </div>
         <!-- hamburger menu - login button -->
-        <button class="btn-primary" type="button">Login</button>
+        <button
+          class="btn-primary !border-primary !border hover:bg-primary/30"
+          type="button"
+        >
+          Login
+        </button>
       </div>
-      <div class="w-full h-[1px] bg-white"></div>
+      <div class="w-full h-[1px] bg-prtext-primary"></div>
       <!-- links -->
       <div class="overflow-y-scroll grow">
         <div class="flex flex-col w-full gap-4">
           <div
             *ngFor="let link of pagesLinks"
-            class="ui-collapse ui-collapse-plus bg-black/10 group/mobileLink"
+            class="ui-collapse ui-collapse-plus bg-primary/10 group/mobileLink"
           >
             <input
               class=""
@@ -348,7 +357,7 @@
                 <!-- sub sub -->
                 <div class="flex" *ngFor="let subsub of subLink.subLinks">
                   <a
-                    class="px-4 text-white/60 hover:underline"
+                    class="px-4 text-primary/60 hover:underline"
                     *ngIf="subsub.href"
                     [href]="subsub.href"
                     >{{ subsub.name }}</a
