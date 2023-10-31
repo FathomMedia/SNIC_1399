@@ -57,7 +57,7 @@
         <div
           #link
           *ngFor="let link of pagesLinks; index as i"
-          class="px-4 py-3 group/link hover:text-secondary"
+          class="pe-10 py-3 group/link hover:text-secondary"
         >
           <a
             *ngIf="link.href"
@@ -76,7 +76,7 @@
           </a>
           <div
             *ngIf="link.href == undefined"
-            class="z-20 flex items-center gap-2 text-sm font-light duration-100 pe-3 hover:underline"
+            class="z-20 flex items-center gap-2 text-sm font-light duration-100 hover:underline"
             (mouseenter)="onMouseHover(i)"
           >
             {{ link.name
