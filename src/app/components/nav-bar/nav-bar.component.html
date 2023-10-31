@@ -100,10 +100,13 @@
               ]"
             >
               <div
-                *ngFor="let subLink of link.subLinks"
+                *ngFor="let subLink of link.subLinks; index as si"
                 class="flex flex-col max-w-3xl gap-3 group/sublink"
               >
-                <div class="flex items-center justify-start gap-4">
+                <div
+                  (mouseenter)="onSubLinkHover(si)"
+                  class="flex items-center justify-start gap-4"
+                >
                   <a
                     *ngIf="subLink.href"
                     class="w-fit flex gap-2 items-center group-hover/sublink:text-secondary"
@@ -131,8 +134,9 @@
                 </div>
                 <!-- sub sub links -->
                 <div
+                  #subSubLinks
                   *ngIf="subLink.subLinks"
-                  class="flex-col gap-2 hidden group-hover/sublink:flex duration-300"
+                  class="flex-col gap-2 flex duration-300"
                 >
                   <div *ngFor="let subSub of subLink.subLinks">
                     <a
