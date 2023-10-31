@@ -10,4 +10,5 @@ export class DownloadAppBannerComponent {
   public bannerRTL: string = 'assets/images/download-snic-banner-rtl.jpg';
   public bannerAppStore: string = 'assets/images/appstore.png';
   public bannerPlayStore: string = 'assets/images/playstore.png';
+  public bannerHuawei: string = 'assets/images/huawei.png';
 }

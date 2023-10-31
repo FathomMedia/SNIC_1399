@@ -20,6 +20,7 @@ export class FooterSectionComponent {
   public bestLogo: string = 'assets/images/best.png';
   public appStore: string = 'assets/images/appstore.png';
   public playStore: string = 'assets/images/playstore.png';
+  public huawei: string = 'assets/images/huawei.png';
   public instagram: string = 'assets/icons/instagram.svg';
   public linkedin: string = 'assets/icons/linkedin.svg';
   public phone: string = 'assets/icons/phone.svg';

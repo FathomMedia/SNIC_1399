@@ -66,7 +66,7 @@
 
     <!-- social  -->
     <div
-      class="grid grid-cols-1 gap-6 text-sm font-light sm:grid-cols-2 lg:grid-cols-3 place-content-center"
+      class="grid grid-cols-1 gap-6 text-sm font-light sm:grid-cols-2 lg:grid-cols-3 place-content-center items-end"
     >
       <p>
         © 2023 SNIC Insurance <br />
@@ -74,7 +74,7 @@
         Firm.
       </p>
 
-      <div class="flex items-center justify-center gap-8">
+      <div class="flex items-center max-sm:justify-start justify-center gap-8">
         <div class="group/subSubs">
           <a href="#" class="text-white/80">Privacy Policy</a>
           <div
@@ -90,17 +90,17 @@
       </div>
 
       <div
-        class="flex flex-wrap items-center justify-center gap-4 sm:justify-end sm:col-span-2 lg:col-span-1"
+        class="flex flex-wrap items-center max-sm:justify-start justify-center gap-4 sm:justify-end sm:col-span-2 lg:col-span-1"
       >
         <div class="flex items-center gap-4">
-          <a href="#" class="w-6 h-6 hover:scale-110">
+          <a title="instagram" href="#" class="w-6 h-6 hover:scale-110">
             <svg-icon
               class="w-full h-full"
               [src]="instagram"
               alt="SNIC Instagram"
             />
           </a>
-          <a href="#" class="w-6 h-6 hover:scale-110">
+          <a title="Linkedin" href="#" class="w-6 h-6 hover:scale-110">
             <svg-icon
               class="w-full h-full"
               [src]="linkedin"
@@ -108,7 +108,7 @@
             />
           </a>
         </div>
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center gap-4">
           <a
             href="#download"
             class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
@@ -120,6 +120,12 @@
             class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
           >
             <img class="h-10" [src]="playStore" alt="PlayStore" />
+          </a>
+          <a
+            href="#download"
+            class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
+          >
+            <img class="h-10" [src]="huawei" alt="Huawei" />
           </a>
         </div>
       </div>
