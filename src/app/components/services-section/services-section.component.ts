@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 
 //Service section - holds the cards
 export class ServicesSectionComponent {
+  public delay = 300;
+
   public serviceData: {
     icon: string;
     title: string;
