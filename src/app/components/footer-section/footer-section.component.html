@@ -1,5 +1,5 @@
 <div
-  class="relative rounded-t-[3rem] overflow-clip px-10 py-10 lg:py-20 lg:px-24"
+  class="relative rounded-t-[3rem] overflow-clip px-10 py-10 lg:py-10 lg:px-24"
 >
   <!-- content -->
   <div class="container z-10 flex flex-col gap-10 mx-auto text-white">
@@ -12,9 +12,9 @@
         *ngFor="let link of fLinks"
         [ngClass]="['w-full md:block', link.hideMobile ? 'hidden' : '']"
       >
-        <div class="flex flex-col gap-6 w-full">
+        <div class="flex flex-col w-full gap-6">
           <div
-            class="relative w-full hover:scale-105 duration-300 origin-bottom-left"
+            class="relative w-full duration-300 origin-bottom-left hover:scale-105"
           >
             <a class="font-semibold duration-300" [href]="link.href">{{
               link.name
@@ -66,7 +66,7 @@
 
     <!-- social  -->
     <div
-      class="grid grid-cols-1 gap-6 text-sm font-light sm:grid-cols-2 lg:grid-cols-3 place-content-center items-end"
+      class="grid items-end grid-cols-1 gap-6 text-sm font-light sm:grid-cols-2 lg:grid-cols-3 place-content-center"
     >
       <p>
         © 2023 SNIC Insurance <br />
@@ -74,7 +74,7 @@
         Firm.
       </p>
 
-      <div class="flex items-center max-sm:justify-start justify-center gap-8">
+      <div class="flex items-center justify-center gap-8 max-sm:justify-start">
         <div class="group/subSubs">
           <a href="#" class="text-white/80">Privacy Policy</a>
           <div
@@ -90,7 +90,7 @@
       </div>
 
       <div
-        class="flex flex-wrap items-center max-sm:justify-start justify-center gap-4 sm:justify-end sm:col-span-2 lg:col-span-1"
+        class="flex flex-wrap items-center justify-center gap-4 max-sm:justify-start sm:justify-end sm:col-span-2 lg:col-span-1"
       >
         <div class="flex items-center gap-4">
           <a title="instagram" href="#" class="w-6 h-6 hover:scale-110">
