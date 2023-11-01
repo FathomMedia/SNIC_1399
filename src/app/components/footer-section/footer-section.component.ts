@@ -14,8 +14,12 @@ type FooterLinks = {
   styleUrls: ['./footer-section.component.scss'],
 })
 export class FooterSectionComponent {
+  // change this url to the url where you host your video or use the local version
   public footerVideoURL: string =
     'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698323036/SNIC_1399/16_by_10_np7qmi.mp4';
+  // the video available in the bellow path
+  public localFooterVideoURL: string = 'assets/videos/footer-video.mp4';
+
   public navBarLogo: string = 'assets/images/logo-white.png';
   public bestLogo: string = 'assets/images/best.png';
   public appStore: string = 'assets/images/appstore.png';

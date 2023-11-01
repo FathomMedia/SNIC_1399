@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { LanguagesService } from 'src/app/services/languages.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-hero-section',
@@ -7,7 +6,11 @@ import { LanguagesService } from 'src/app/services/languages.service';
   styleUrls: ['./hero-section.component.scss'],
 })
 export class HeroSectionComponent {
-  constructor(private language: LanguagesService) {}
+  constructor() {}
+  // change this url to the url where you host your video or use the local version
   public heroVideoURL: string =
     'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698312536/SNIC_1399/hero-video_uubqzn.mp4';
+
+  // the video available in the bellow path
+  public localHeroVideoURL: string = 'assets/videos/hero-video.mp4';
 }
