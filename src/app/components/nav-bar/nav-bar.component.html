@@ -52,12 +52,12 @@
       <!-- links -->
       <div
         #links
-        class="flex-wrap items-center hidden py-10 1p5xl:flex w-fit mr-auto"
+        class="flex-wrap items-center hidden gap-10 py-10 mr-auto 1p5xl:flex w-fit"
       >
         <div
           #link
           *ngFor="let link of pagesLinks; index as i"
-          class="pe-10 py-3 group/link hover:text-secondary"
+          class="py-3 group/link hover:text-secondary"
         >
           <a
             *ngIf="link.href"
@@ -74,7 +74,7 @@
           </a>
           <div
             *ngIf="link.href == undefined"
-            class="z-20 flex items-center gap-2 text-sm font-light duration-100 hover:underline"
+            class="z-20 flex items-center gap-2 text-sm font-light duration-100 cursor-default hover:underline"
             (mouseenter)="onMouseHover(i)"
           >
             {{ link.name
@@ -93,7 +93,7 @@
               hoveredIndex === i &&
               pagesLinks[hoveredIndex].subLinks
                 ? 'translate-y-2'
-                : ' opacity-0 '
+                : 'opacity-0'
             ]"
           ></div>
           <div
@@ -122,7 +122,7 @@
                 <div class="flex items-center justify-start gap-4">
                   <a
                     *ngIf="subLink.href"
-                    class="w-fit flex gap-2 items-center group-hover/sublink:text-secondary"
+                    class="flex items-center gap-2 w-fit group-hover/sublink:text-secondary"
                     [href]="subLink.href"
                   >
                     <div
@@ -149,7 +149,7 @@
                 <div
                   #subSubLinks
                   *ngIf="subLink.subLinks"
-                  class="flex-col gap-2 pl-8 flex duration-300"
+                  class="flex flex-col gap-2 pl-8 duration-300"
                 >
                   <div *ngFor="let subSub of subLink.subLinks">
                     <a
@@ -253,10 +253,10 @@
         <button
           (click)="toggleMenu()"
           type="button"
-          class="relative w-8 h-8 p-1 rounded-full border border-primary 1p5xl:hidden aspect-square hover:bg-primary/30"
+          class="relative w-8 h-8 p-1 border rounded-full border-primary 1p5xl:hidden aspect-square hover:bg-primary/30"
         >
           <svg-icon
-            class="w-full h-full flex flex-col justify-center items-center"
+            class="flex flex-col items-center justify-center w-full h-full"
             [src]="navClose"
             alt="Close"
           />
@@ -270,7 +270,7 @@
             type="button"
             *ngIf="currentLang !== 'en'"
             (click)="this.changeLanguage()"
-            class="flex items-center h-8 gap-2 p-2 text-primary border border-primary rounded-full hover:bg-primary/30 min-w-fit"
+            class="flex items-center h-8 gap-2 p-2 border rounded-full text-primary border-primary hover:bg-primary/30 min-w-fit"
           >
             <!-- lang icon btn -->
             <svg-icon
@@ -284,7 +284,7 @@
             type="button"
             *ngIf="currentLang == 'en'"
             (click)="this.changeLanguage()"
-            class="flex items-center h-8 gap-2 p-2 text-primary border border-primary rounded-full hover:bg-primary/30 min-w-fit"
+            class="flex items-center h-8 gap-2 p-2 border rounded-full text-primary border-primary hover:bg-primary/30 min-w-fit"
           >
             <!-- lang icon btn -->
             <svg-icon
