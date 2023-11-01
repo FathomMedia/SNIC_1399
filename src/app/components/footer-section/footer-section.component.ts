@@ -16,7 +16,7 @@ type FooterLinks = {
 export class FooterSectionComponent {
   // change this url to the url where you host your video or use the local version
   public footerVideoURL: string =
-    'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698835546/SNIC_1399/SNIC-light-footer_axjwhu.mp4';
+    'https://res.cloudinary.com/dmcww8ukp/video/upload/v1698835775/SNIC-light-footer_qqjtfh.mp4';
   // the video available in the bellow path
   // public localFooterVideoURL: string = 'assets/videos/footer-video.mp4';
   public localFooterVideoURL: string = 'assets/videos/SNIC-light-footer.mp4';
