@@ -204,6 +204,18 @@ export class FooterSectionComponent {
           hideMobile: false,
           logo: this.mail,
         },
+        {
+          name: 'Instagram',
+          href: '#',
+          hideMobile: false,
+          logo: this.instagram,
+        },
+        {
+          name: 'LinkedIn',
+          href: '#',
+          hideMobile: false,
+          logo: this.linkedin,
+        },
       ],
     },
   ];

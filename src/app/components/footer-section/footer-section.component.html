@@ -34,7 +34,7 @@
               [href]="subLink.href"
               ><svg-icon
                 *ngIf="subLink.logo"
-                class="w-4 h-4"
+                class="object-contain w-4 h-4"
                 [src]="subLink.logo"
               />{{ subLink.name }}</a
             >
@@ -45,6 +45,18 @@
         </div>
       </div>
     </div>
+    <!-- <div class="flex items-center self-end gap-4">
+      <a title="instagram" href="#" class="w-6 h-6 hover:scale-110">
+        <svg-icon
+          class="w-full h-full"
+          [src]="instagram"
+          alt="SNIC Instagram"
+        />
+      </a>
+      <a title="Linkedin" href="#" class="w-6 h-6 hover:scale-110">
+        <svg-icon class="w-full h-full" [src]="linkedin" alt="SNIC Linkedin" />
+      </a>
+    </div> -->
 
     <!-- logos -->
     <div class="flex justify-between">
@@ -88,11 +100,35 @@
           ></div>
         </div>
       </div>
+      <div class="flex items-center justify-between gap-4">
+        <a
+          href="#download"
+          class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
+        >
+          <img class="object-scale-down h-10" [src]="appStore" alt="AppStore" />
+        </a>
+        <a
+          href="#download"
+          class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
+        >
+          <img
+            class="object-scale-down h-10"
+            [src]="playStore"
+            alt="PlayStore"
+          />
+        </a>
+        <a
+          href="#download"
+          class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
+        >
+          <img class="object-scale-down h-10" [src]="huawei" alt="Huawei" />
+        </a>
+      </div>
 
-      <div
+      <!-- <div
         class="flex flex-wrap items-center justify-center gap-4 max-sm:justify-start sm:justify-end sm:col-span-2 lg:col-span-1"
-      >
-        <div class="flex items-center gap-4">
+      > -->
+      <!-- <div class="flex items-center gap-4">
           <a title="instagram" href="#" class="w-6 h-6 hover:scale-110">
             <svg-icon
               class="w-full h-full"
@@ -107,28 +143,36 @@
               alt="SNIC Linkedin"
             />
           </a>
-        </div>
-        <div class="flex flex-wrap items-center gap-4">
+        </div> -->
+      <!-- <div class="flex items-center gap-4">
           <a
             href="#download"
             class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
           >
-            <img class="h-10" [src]="appStore" alt="AppStore" />
+            <img
+              class="object-scale-down h-10"
+              [src]="appStore"
+              alt="AppStore"
+            />
           </a>
           <a
             href="#download"
             class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
           >
-            <img class="h-10" [src]="playStore" alt="PlayStore" />
+            <img
+              class="object-scale-down h-10"
+              [src]="playStore"
+              alt="PlayStore"
+            />
           </a>
           <a
             href="#download"
             class="duration-300 rounded-md hover:-translate-y-1 hover:brightness-125"
           >
-            <img class="h-10" [src]="huawei" alt="Huawei" />
+            <img class="object-scale-down h-10" [src]="huawei" alt="Huawei" />
           </a>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
     </div>
   </div>
 
