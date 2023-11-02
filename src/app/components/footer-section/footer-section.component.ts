@@ -106,40 +106,6 @@ export class FooterSectionComponent {
       ],
     },
     {
-      name: 'Quick Renewal',
-      href: '#',
-      hideMobile: false,
-      subLinks: [
-        {
-          name: 'Motor Insurance Renewal',
-          href: '#',
-          hideMobile: true,
-        },
-        {
-          name: 'Home Renewal',
-          href: '#',
-          hideMobile: true,
-        },
-      ],
-    },
-    {
-      name: 'Claims',
-      href: '#',
-      hideMobile: false,
-      subLinks: [
-        {
-          name: 'Motor Claim',
-          href: '#',
-          hideMobile: true,
-        },
-        {
-          name: 'Medical Claim',
-          href: '#',
-          hideMobile: true,
-        },
-      ],
-    },
-    {
       name: 'About Us',
       href: '#',
       hideMobile: false,
@@ -171,6 +137,40 @@ export class FooterSectionComponent {
         },
         {
           name: 'News ',
+          href: '#',
+          hideMobile: true,
+        },
+      ],
+    },
+    {
+      name: 'Quick Renewal',
+      href: '#',
+      hideMobile: false,
+      subLinks: [
+        {
+          name: 'Motor Insurance Renewal',
+          href: '#',
+          hideMobile: true,
+        },
+        {
+          name: 'Home Renewal',
+          href: '#',
+          hideMobile: true,
+        },
+      ],
+    },
+    {
+      name: 'Claims',
+      href: '#',
+      hideMobile: false,
+      subLinks: [
+        {
+          name: 'Motor Claim',
+          href: '#',
+          hideMobile: true,
+        },
+        {
+          name: 'Medical Claim',
           href: '#',
           hideMobile: true,
         },
