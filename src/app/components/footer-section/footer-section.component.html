@@ -10,16 +10,16 @@
       <!-- primary links -->
       <div
         *ngFor="let link of fLinks"
-        [ngClass]="['w-full md:block', link.hideMobile ? 'hidden' : '']"
+        [ngClass]="['w-full md:block ', link.hideMobile ? 'hidden' : '']"
       >
         <div class="flex flex-col w-full gap-6">
           <div
-            class="relative w-full duration-300 origin-bottom-left hover:scale-105"
+            class="relative duration-300 origin-bottom-left w-fit hover:scale-105"
           >
             <a class="font-semibold duration-300" [href]="link.href">{{
               link.name
             }}</a>
-            <div class="h-[1px] w-1/2 bg-white md:block hidden"></div>
+            <div class="h-[1px] w-full bg-white md:block hidden"></div>
           </div>
           <!-- sub links -->
           <div
@@ -45,18 +45,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="flex items-center self-end gap-4">
-      <a title="instagram" href="#" class="w-6 h-6 hover:scale-110">
-        <svg-icon
-          class="w-full h-full"
-          [src]="instagram"
-          alt="SNIC Instagram"
-        />
-      </a>
-      <a title="Linkedin" href="#" class="w-6 h-6 hover:scale-110">
-        <svg-icon class="w-full h-full" [src]="linkedin" alt="SNIC Linkedin" />
-      </a>
-    </div> -->
 
     <!-- logos -->
     <div class="flex justify-between">
